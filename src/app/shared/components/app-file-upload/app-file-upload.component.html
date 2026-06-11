@@ -1,0 +1,65 @@
+<div class="flex flex-col gap-1">
+  @if (label()) {
+    <label class="font-medium">{{ label() }}</label>
+  }
+  <!-- Control de carga de archivo -->
+  <div>
+    <p-fileUpload
+      mode="advanced"
+      [chooseLabel]="fileUploadText()"
+      [accept]="adjustedAccept()"
+      [maxFileSize]="maxFileSize()"
+      [customUpload]="true"
+      [showUploadButton]="false"
+      [showCancelButton]="false"
+      [multiple]="multiple()"
+      (onSelect)="onFileSelect($event)"
+      (onClear)="onClear()"
+      styleClass="custom-file-upload"
+    >
+      <ng-template pTemplate="chooseicon">
+        <svg [lucideIcon]="getIcon('upload')" class="w-4 h-4 text-white"></svg>
+      </ng-template>
+    </p-fileUpload>
+  </div>
+  @if (fileRecommendation()) {
+    <div class="text-md text-gray-500">
+      <small>{{ fileRecommendation() }}</small>
+    </div>
+  }
+</div>
+
+<!-- Los estilos se mantienen igual -->
+<style>
+  /* BORDE ROJO PARA EL CONTENEDOR PRINCIPAL */
+  :host ::ng-deep .p-fileupload {
+    border: 1px solid rgb(55, 65, 81) !important;
+    border-radius: 4px !important;
+  }
+
+  /* Estilos personalizados para el botón de selección de archivos */
+  :host ::ng-deep .p-fileupload-choose-button.p-button {
+    background-color: rgb(31, 41, 55) !important;
+    border: 1px solid rgb(255, 255, 255) !important;
+    color: white !important;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease !important;
+  }
+
+  /* Estilo para el hover del botón de selección de archivos */
+  :host ::ng-deep .p-fileupload-choose-button.p-button:hover {
+    background-color: rgb(55, 65, 81) !important;
+    color: white !important;
+  }
+
+  /* Estilo para el icono de carga */
+  :host ::ng-deep .p-fileupload-choose-button svg {
+    color: white !important;
+  }
+
+  /* Ocultar el botón de cancelar  */
+  :host ::ng-deep .p-fileupload-row-actions .p-button-icon-only {
+    display: none !important;
+  }
+</style>

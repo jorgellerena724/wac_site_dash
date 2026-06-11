@@ -1,0 +1,168 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[520px]">
+  <!-- Usuario -->
+  <div class="grid grid-cols-2 mb-4 gap-4">
+    <app-select
+      [placeholder]="
+        'components.chatbot_config.create.fields.user.title' | transloco
+      "
+      [options]="users()"
+      [isSearchable]="true"
+      formControlName="user_id"
+      [control]="getFormControl('user_id')"
+      [errorMessages]="{
+        required:
+          ('components.chatbot_config.create.fields.user.required' | transloco),
+        userExists:
+          ('components.chatbot_config.create.fields.user.exists' | transloco),
+      }"
+    ></app-select>
+    <app-text-field
+      id="temperature"
+      label="{{
+        'components.chatbot_config.create.fields.temperature.title' | transloco
+      }}"
+      [control]="getFormControl('temperature')"
+      [maxLength]="3"
+      [numbersOnly]="true"
+      [allowDecimals]="true"
+      [errorMessages]="{
+        required:
+          ('components.chatbot_config.create.fields.temperature.required'
+          | transloco),
+        min:
+          ('components.chatbot_config.create.fields.temperature.min'
+          | transloco),
+        max:
+          ('components.chatbot_config.create.fields.temperature.max'
+          | transloco),
+      }"
+    ></app-text-field>
+  </div>
+
+  <!-- Providers Configurados -->
+  <div class="mb-4">
+    <h4 class="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
+      Proveedores
+    </h4>
+    <button
+      type="button"
+      (click)="addProviderConfig()"
+      class="flex items-center gap-2 px-3 py-2 text-sm text-white rounded-lg transition-colors bg-gray-800 hover:bg-gray-700"
+    >
+      <svg [lucideIcon]="getIcon('plus')" class="w-4 h-4"></svg>
+      <span>Agregar Proveedor</span>
+    </button>
+  </div>
+
+  @if (providerConfigs().length > 0) {
+    <div class="space-y-3 mb-4">
+      @for (config of providerConfigs(); track $index; let i = $index) {
+        <div
+          class="flex items-start gap-3 p-4 bg-white dark:bg-white rounded-lg border border-black"
+        >
+          <div class="flex-1 grid grid-cols-2 gap-3">
+            <app-select
+              placeholder="Seleccionar provider"
+              [options]="providers()"
+              [control]="getProviderControl(i, 'provider')"
+              [errorMessages]="{
+                required: 'El provider es requerido',
+              }"
+              (onChange)="onProviderChange(i, $event)"
+            ></app-select>
+            <app-text-field
+              [id]="'provider-api_key-' + i"
+              label="API Key"
+              [control]="getProviderControl(i, 'api_key')"
+              [errorMessages]="{
+                required: 'La API key es requerida',
+                minlength: 'Mínimo 20 caracteres',
+              }"
+            ></app-text-field>
+          </div>
+          <button
+            type="button"
+            (click)="removeProviderConfig(i)"
+            class="p-2 text-red-500 dark:hover:bg-red-900/20 rounded-full transition-colors"
+            pTooltip="Eliminar proveedor"
+            tooltipPosition="top"
+          >
+            <svg [lucideIcon]="getIcon('trash-2')" class="w-4 h-4"></svg>
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (providerConfigs().length === 0) {
+    <div class="p-4 bg-white dark:bg-white rounded-lg border border-black mb-4">
+      <div class="text-center py-8">
+        <svg
+          [lucideIcon]="getIcon('settings')"
+          class="w-8 h-8 text-gray-300 dark:text-gray-600 mb-3 block mx-auto"
+        ></svg>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Agrega al menos un proveedor
+        </p>
+      </div>
+    </div>
+  }
+
+  <hr class="border-gray-500 my-4 border-opacity-10" />
+
+  <!-- API Key de Groq -->
+  <div class="mb-4">
+    <app-text-field
+      id="api_key"
+      label="{{
+        'components.chatbot_config.create.fields.apiKey.title' | transloco
+      }}"
+      [control]="getFormControl('api_key')"
+      [errorMessages]="{
+        required:
+          ('components.chatbot_config.create.fields.apiKey.required'
+          | transloco),
+        minlength:
+          ('components.chatbot_config.create.fields.apiKey.minlength'
+          | transloco),
+      }"
+    ></app-text-field>
+  </div>
+
+  <hr class="border-gray-500 my-4 border-opacity-10" />
+
+  <!-- System Prompt -->
+  <div class="mb-4">
+    <app-text-field
+      id="prompt"
+      label="{{
+        'components.chatbot_config.create.fields.prompt.title' | transloco
+      }}"
+      [control]="getFormControl('prompt')"
+      [isTextArea]="true"
+      textAreaHeight="h-40"
+      [errorMessages]="{
+        required:
+          ('components.chatbot_config.create.fields.prompt.required'
+          | transloco),
+        minlength:
+          ('components.chatbot_config.create.fields.prompt.minlength'
+          | transloco),
+      }"
+    ></app-text-field>
+  </div>
+</form>
+
+<style>
+  :host ::ng-deep app-select label,
+  :host ::ng-deep app-text-field label {
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+    font-size: 14px;
+  }
+
+  :host ::ng-deep .dark app-select label,
+  :host ::ng-deep .dark app-text-field label {
+    color: #f3f4f6 !important;
+  }
+</style>

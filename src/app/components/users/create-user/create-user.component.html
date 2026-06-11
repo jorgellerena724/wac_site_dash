@@ -1,0 +1,48 @@
+<form [formGroup]="form">
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    <app-text-field
+      id="full_name"
+      [label]="'fields.name.title' | transloco"
+      [control]="getFormControl('full_name')"
+      [errorMessages]="{
+        required: ('fields.name.required' | transloco),
+        minlength: ('fields.name.minlength' | transloco),
+        maxlength: ('fields.name.maxlength' | transloco),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="email"
+      [label]="'fields.email.title' | transloco"
+      [control]="getFormControl('email')"
+      [errorMessages]="{
+        required: ('fields.email.required' | transloco),
+        email: ('fields.email.email' | transloco),
+      }"
+    ></app-text-field>
+  </div>
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    <app-text-field
+      id="password"
+      [label]="'fields.password.title' | transloco"
+      [control]="getFormControl('password')"
+      [type]="'password'"
+      [errorMessages]="{
+        required: ('fields.password.required' | transloco),
+        minlength: ('fields.password.minlength' | transloco),
+        maxlength: ('fields.password.maxlength' | transloco),
+        noLowerCase: ('fields.password.noLowerCase' | transloco),
+        noUpperCase: ('fields.password.noUpperCase' | transloco),
+        noNumber: ('fields.password.noNumber' | transloco),
+        noSpecialChar: ('fields.password.noSpecialChar' | transloco),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="client"
+      [label]="'fields.client.title' | transloco"
+      [control]="getFormControl('client')"
+      [errorMessages]="{
+        required: ('fields.client.required' | transloco),
+      }"
+    ></app-text-field>
+  </div>
+</form>

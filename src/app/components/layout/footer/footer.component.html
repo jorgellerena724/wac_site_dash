@@ -1,0 +1,53 @@
+<footer
+  class="bg-gray-800 shadow-lg text-white border-t border-gray-700 mt-auto"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Contenido mínimo del footer -->
+    <div
+      class="flex flex-col md:flex-row md:items-center md:justify-between items-center"
+    >
+      <div class="text-sm text-gray-400 text-center md:text-left">
+        © {{ currentYear() }} Shirkasoft.
+        {{ "footer.rights_reserved" | transloco }}.
+      </div>
+      <div class="flex mt-4 md:mt-0 space-x-6 md:mr-20">
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/+5352751126"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-green-600 transition-colors duration-200"
+          [attr.aria-label]="'footer.whatsapp' | transloco"
+          pTooltip="WhatsApp"
+          tooltipPosition="top"
+        >
+          <svg lucideMessageCircle class="w-5 h-5" aria-hidden="true"></svg>
+        </a>
+
+        <!-- Email -->
+        <a
+          href="mailto:jorgellerena724@gmail.com"
+          class="text-gray-400 hover:text-red-600 transition-colors duration-200"
+          [attr.aria-label]="'footer.email' | transloco"
+          pTooltip="Email"
+          tooltipPosition="top"
+        >
+          <svg lucideMail class="w-5 h-5" aria-hidden="true"></svg>
+        </a>
+
+        <!-- Website -->
+        <a
+          href="https://shirkasoft.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-blue-600 transition-colors duration-200"
+          [attr.aria-label]="'footer.website' | transloco"
+          pTooltip="Website"
+          tooltipPosition="top"
+        >
+          <svg lucideGlobe class="w-5 h-5" aria-hidden="true"></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

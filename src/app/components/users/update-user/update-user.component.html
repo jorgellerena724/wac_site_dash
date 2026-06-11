@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    <app-text-field
+      id="full_name"
+      [label]="'fields.name.title' | transloco"
+      [control]="getFormControl('full_name')"
+      [errorMessages]="{
+        required: ('fields.name.required' | transloco),
+        minlength: ('fields.name.minlength' | transloco),
+        maxlength: ('fields.name.maxlength' | transloco),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="email"
+      [label]="'fields.email.title' | transloco"
+      [control]="getFormControl('email')"
+      [errorMessages]="{
+        required: ('fields.email.required' | transloco),
+        email: ('fields.email.email' | transloco),
+      }"
+    ></app-text-field>
+  </div>
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    <app-text-field
+      id="client"
+      [label]="'fields.client.title' | transloco"
+      [control]="getFormControl('client')"
+      [errorMessages]="{
+        required: ('fields.client.required' | transloco),
+      }"
+    ></app-text-field>
+  </div>
+</form>

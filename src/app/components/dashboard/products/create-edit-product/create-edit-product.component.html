@@ -1,0 +1,332 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4 grid grid-cols-2 gap-4">
+    <app-text-field
+      formControlName="title"
+      [label]="t('fields.name.title')"
+      [control]="getFormControl('title')"
+      [errorMessages]="{
+        required: t('fields.name.required'),
+        minlength: t('fields.name.minlength'),
+        duplicateTitle: t('fields.name.duplicateTitle'),
+      }"
+    ></app-text-field>
+    <app-select
+      [placeholder]="t('fields.category.title')"
+      [options]="categories()"
+      formControlName="category"
+      [control]="getFormControl('category')"
+      [errorMessages]="{
+        required: t('fields.category.required'),
+      }"
+      [emptyMessageKey]="'components.products.create.no_categories_found'"
+    ></app-select>
+  </div>
+  @if (showCalUrlField()) {
+    <div>
+      <app-text-field
+        id="cal_url"
+        [label]="t('fields.calurl.title')"
+        [control]="getFormControl('cal_url')"
+      ></app-text-field>
+    </div>
+  }
+
+  <!-- Sección de Variantes -->
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <h4
+        class="text-black text-sm mb-1 mt-3 dark:text-[rgb(209,213,219)] font-bold"
+      >
+        {{ t("fields.variants.title") }}
+      </h4>
+      <button
+        type="button"
+        (click)="addVariant()"
+        class="flex items-center gap-2 px-3 py-2 text-sm text-white rounded-lg transition-colors bg-gray-800 hover:bg-gray-700"
+      >
+        <svg [lucideIcon]="getIcon('plus')" class="w-4 h-4"></svg>
+        <span>{{ t("fields.variants.add") }}</span>
+      </button>
+    </div>
+
+    <!-- Lista de variantes existentes -->
+    @if (variants().length > 0) {
+      <div class="space-y-3">
+        @for (variant of variants(); track $index; let i = $index) {
+          <div
+            class="flex items-start gap-3 p-4 bg-white dark:bg-white rounded-lg border border-black"
+          >
+            <div class="flex-1 grid grid-cols-2 gap-3">
+              <app-text-field
+                [id]="'variant-description-' + i"
+                [label]="t('fields.variants.description.title')"
+                [control]="getVariantControl(i, 'description')"
+                [errorMessages]="{
+                  required: t('fields.variants.description.required'),
+                }"
+              ></app-text-field>
+              <app-text-field
+                [id]="'variant-price-' + i"
+                [label]="t('fields.variants.price.title')"
+                [placeholder]="t('fields.variants.price.optional')"
+                [control]="getVariantControl(i, 'price')"
+                [allowDecimals]="true"
+                [numbersOnly]="true"
+              ></app-text-field>
+            </div>
+            <button
+              type="button"
+              (click)="removeVariant(i)"
+              class="p-2 text-red-500 dark:hover:bg-red-900/20 rounded-full transition-colors"
+              [pTooltip]="t('fields.variants.deleteVariant')"
+              tooltipPosition="top"
+            >
+              <svg [lucideIcon]="getIcon('trash-2')" class="w-4 h-4"></svg>
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Estado vacío para variantes -->
+    @if (variants().length === 0) {
+      <div class="p-4 bg-white dark:bg-white rounded-lg border border-black">
+        <div class="text-center py-8">
+          <svg
+            [lucideIcon]="getIcon('list')"
+            class="w-8 h-8 text-gray-300 dark:text-gray-600 mb-3 mx-auto"
+          ></svg>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            {{ t("fields.variants.empty") }}
+          </p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <app-text-field
+    id="description"
+    [label]="t('fields.description.title')"
+    [control]="getFormControl('description')"
+    [isTextArea]="true"
+    textAreaHeight="h-56"
+  ></app-text-field>
+
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+
+  <!-- Sección de Archivos Múltiples -->
+  <div class="space-y-4">
+    <app-file-upload
+      #fileUpload
+      [label]="t('fields.image.title')"
+      accept="image/*,video/mp4,video/quicktime,"
+      [maxFileSize]="1024 * 1024 * 20"
+      [multiple]="true"
+      fileUploadText="{{ 'image.select' | transloco }}"
+      [fileRecommendation]="t('fields.image.recommendation')"
+      (fileSelected)="onFileUploaded($event)"
+      (fileError)="onFileError($event)"
+      (fileWarning)="onFileWarning($event)"
+    ></app-file-upload>
+
+    <div class="text-md text-gray-500">
+      <small>{{ t("fields.image.uploadInfo") }}</small>
+    </div>
+
+    <div class="text-md text-gray-500">
+      <small>{{ t("fields.image.mainImageInfo") }}</small>
+    </div>
+
+    <!-- Mensaje de error cuando no hay archivos -->
+    @if (
+      filesFormArray.invalid &&
+      filesFormArray.touched &&
+      productFiles().length === 0
+    ) {
+      <div class="mt-1 text-sm text-red-500">
+        <ul class="list-disc pl-4">
+          <li>{{ t("fields.image.required") }}</li>
+        </ul>
+      </div>
+    }
+
+    <!-- Lista de archivos cargados -->
+    @if (productFiles().length > 0) {
+      <div class="space-y-4">
+        @for (productFile of productFiles(); track $index; let i = $index) {
+          <div
+            class="flex items-start gap-3 p-4 bg-white dark:bg-white rounded-lg border border-black relative"
+          >
+            <!-- Badge de imagen principal -->
+            @if (i === 0) {
+              <div
+                class="absolute -top-2 -left-2 bg-gray-800 dark:bg-gray-700 text-white text-xs px-3 py-1 rounded-full font-bold shadow-lg z-10 flex items-center gap-1"
+              >
+                <svg [lucideIcon]="getIcon('star')" class="w-4 h-4"></svg>
+              </div>
+            }
+            <!-- Preview -->
+            <div
+              class="flex-shrink-0 w-32 h-32 flex items-center justify-center bg-gray-100 rounded-lg border"
+            >
+              <div
+                class="relative w-full h-full flex items-center justify-center"
+              >
+                <!-- Loading spinner para archivos existentes -->
+                @if (
+                  loadingImage() &&
+                  productFile.isExisting &&
+                  !productFile.previewUrl &&
+                  !productFile.videoUrl
+                ) {
+                  <div
+                    class="absolute inset-0 flex items-center justify-center bg-gray-50 rounded-lg"
+                  >
+                    <div
+                      class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"
+                    ></div>
+                  </div>
+                }
+                <!-- Imagen -->
+                @if (!productFile.isVideo && productFile.previewUrl) {
+                  <div class="w-full h-full flex items-center justify-center">
+                    <img
+                      [src]="productFile.previewUrl"
+                      class="max-w-full max-h-full object-contain rounded-lg"
+                      alt="Preview"
+                    />
+                  </div>
+                }
+                <!-- Video -->
+                @if (productFile.isVideo && productFile.videoUrl) {
+                  <div
+                    class="w-full h-full flex items-center justify-center bg-black rounded-lg"
+                  >
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      [src]="productFile.videoUrl"
+                      class="w-full h-full object-contain rounded-lg"
+                      #videoPlayer
+                      (loadedmetadata)="onVideoLoaded($event, videoPlayer)"
+                      poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    >
+                      <div
+                        class="absolute inset-0 flex items-center justify-center bg-black text-white p-2 text-xs"
+                      >
+                        <p>{{ "video.unsupported" | transloco }}</p>
+                      </div>
+                    </video>
+                  </div>
+                }
+                <!-- Icono si no hay preview -->
+                @if (!productFile.previewUrl && !productFile.videoUrl) {
+                  <div class="text-gray-400">
+                    <svg [lucideIcon]="getIcon('images')" class="w-8 h-8"></svg>
+                  </div>
+                }
+              </div>
+            </div>
+            <!-- Campo de título -->
+            <div class="flex-1">
+              <app-text-field
+                [id]="'file-title-' + i"
+                [control]="getFileControl(i, 'title')"
+                [placeholder]="t('fields.image.titlePlaceholder')"
+              ></app-text-field>
+            </div>
+            <!-- Botones de reordenamiento -->
+            <div class="flex flex-col gap-0">
+              <button
+                type="button"
+                (click)="moveFileUp(i)"
+                [disabled]="i === 0"
+                [class.opacity-30]="i === 0"
+                [class.cursor-not-allowed]="i === 0"
+                class="p-0 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors border-b border-gray-600 dark:border-gray-400"
+                [pTooltip]="
+                  i === 0
+                    ? t('fields.image.firstImage')
+                    : t('fields.image.moveUp')
+                "
+                tooltipPosition="top"
+              >
+                <svg [lucideIcon]="getIcon('chevron-up')" class="w-4 h-4"></svg>
+              </button>
+              <button
+                type="button"
+                (click)="moveFileDown(i)"
+                [disabled]="i === productFiles().length - 1"
+                [class.opacity-30]="i === productFiles().length - 1"
+                [class.cursor-not-allowed]="i === productFiles().length - 1"
+                class="p-0 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                [pTooltip]="
+                  i === productFiles().length - 1
+                    ? t('fields.image.lastImage')
+                    : t('fields.image.moveDown')
+                "
+                tooltipPosition="top"
+              >
+                <svg
+                  [lucideIcon]="getIcon('chevron-down')"
+                  class="w-4 h-4"
+                ></svg>
+              </button>
+            </div>
+            <!-- Botón eliminar -->
+            <button
+              type="button"
+              (click)="removeFile(i)"
+              class="p-2 text-red-500 dark:hover:bg-red-900/20 rounded-full transition-colors"
+              [pTooltip]="t('fields.image.deleteImage')"
+              tooltipPosition="top"
+            >
+              <svg [lucideIcon]="getIcon('trash-2')" class="w-4 h-4"></svg>
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Estado vacío para archivos -->
+    @if (productFiles().length === 0) {
+      <div class="p-4 bg-white dark:bg-white rounded-lg border border-black">
+        <div class="text-center py-8">
+          <svg
+            [lucideIcon]="getIcon('images')"
+            class="w-8 h-8 text-gray-300 dark:text-gray-600 mb-3 mx-auto"
+          ></svg>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            {{ "image.nodata.title" | transloco }}
+          </p>
+        </div>
+      </div>
+    }
+  </div>
+</form>
+
+<style>
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+
+  :host ::ng-deep video {
+    border-radius: 0.5rem;
+  }
+
+  :host ::ng-deep video::-webkit-media-controls-panel {
+    background-image: linear-gradient(transparent, transparent) !important;
+  }
+
+  :host ::ng-deep video::-webkit-media-controls-play-button {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+  }
+</style>

@@ -1,0 +1,53 @@
+<div
+  class="fixed top-4 right-4 z-[9999] space-y-4 sm:space-y-6 sm:top-6 lg:top-8"
+>
+  @for (notification of notifications(); track notification.id) {
+    <div
+      [ngClass]="{
+        'bg-green-50/80 border-green-400 text-green-800':
+          notification.type === 'success',
+        'bg-red-50/80 border-red-400 text-red-800':
+          notification.type === 'error',
+        'bg-blue-50/80 border-blue-400 text-blue-800':
+          notification.type === 'info',
+        'bg-yellow-50/80 border-yellow-400 text-yellow-800':
+          notification.type === 'warning',
+      }"
+      class="flex items-center w-full min-w-[320px] max-w-xs sm:max-w-sm lg:max-w-md p-4 mb-4 border-l-4 rounded-lg shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+      role="alert"
+    >
+      <!-- Icon Container -->
+      <div
+        [ngClass]="{
+          'text-green-600': notification.type === 'success',
+          'text-red-600': notification.type === 'error',
+          'text-blue-600': notification.type === 'info',
+          'text-yellow-600': notification.type === 'warning',
+        }"
+        class="inline-flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-lg bg-opacity-10"
+      >
+        <svg [lucideIcon]="getIcon(getNotificationIcon(notification.type))" class="w-6 h-6"></svg>
+      </div>
+      <!-- Message -->
+      <div class="ms-4 flex-1 text-sm font-medium break-words">
+        {{ notification.message }}
+      </div>
+      <button
+        type="button"
+        (click)="removeNotification(notification)"
+        [ngClass]="{
+          'text-green-600 hover:text-green-800':
+            notification.type === 'success',
+          'text-red-600 hover:text-red-800': notification.type === 'error',
+          'text-blue-600 hover:text-blue-800': notification.type === 'info',
+          'text-yellow-600 hover:text-yellow-800':
+            notification.type === 'warning',
+        }"
+        class="mx-2 -my-1.5 bg-transparent focus:outline-none"
+        aria-label="Close"
+      >
+        <svg [lucideIcon]="getIcon('x')" class="w-4 h-4"></svg>
+      </button>
+    </div>
+  }
+</div>

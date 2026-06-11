@@ -1,0 +1,169 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4 grid grid-cols-2 gap-4">
+    <app-text-field
+      id="title"
+      label="{{ t('fields.name.title') }}"
+      [control]="getFormControl('title')"
+      [errorMessages]="{
+        required: t('fields.name.required'),
+        minlength: t('fields.name.minlength'),
+        uniqueName: t('fields.name.uniqueName'),
+      }"
+    ></app-text-field>
+    <app-select
+      [placeholder]="
+        'components.publications.create.fields.category.title' | transloco
+      "
+      [options]="categories()"
+      [control]="getFormControl('manager_category')"
+      [errorMessages]="{
+        required:
+          ('components.publications.create.fields.category.required'
+          | transloco),
+      }"
+    ></app-select>
+  </div>
+  <div class="mb-4 grid grid-cols-1 gap-4">
+    <app-text-field
+      id="charge"
+      label="{{ t('fields.charge.title') }}"
+      [control]="getFormControl('charge')"
+      [errorMessages]="{
+        required: t('fields.charge.required'),
+        minlength: t('fields.charge.minlength'),
+      }"
+    ></app-text-field>
+  </div>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <app-text-field
+    id="description"
+    label="{{ t('fields.description.title') }}"
+    [control]="getFormControl('description')"
+    [isTextArea]="true"
+    textAreaHeight="h-56"
+    [errorMessages]="{
+      required: t('fields.description.required'),
+      minlength: t('fields.description.minlength'),
+    }"
+  ></app-text-field>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <div class="field">
+    <!-- File Upload -->
+    <app-file-upload
+      #fileUpload
+      label="{{ 'components.managers.create.fields.image.title' | transloco }}"
+      accept="image/*"
+      [maxFileSize]="1024 * 1024"
+      fileUploadText="{{ 'image.select' | transloco }}"
+      fileRecommendation="{{
+        'components.managers.create.fields.image.recommendation' | transloco
+      }}"
+      (fileSelected)="onFileUploaded($event)"
+      (fileRemoved)="removeFile()"
+      (fileError)="onFileError($event)"
+    ></app-file-upload>
+    <!-- Contenedor de altura fija para la previsualización -->
+    <div class="mt-4 relative h-[240px]">
+      <!-- Loading state -->
+      @if (loadingImage()) {
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg"
+        >
+          <div class="text-center">
+            <div
+              class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"
+            ></div>
+            <span class="text-gray-600 dark:text-gray-300 text-sm">{{
+              "image.loading" | transloco
+            }}</span>
+          </div>
+        </div>
+      }
+      <!-- Image Preview Section -->
+      @if (imageUrl() && !loadingImage()) {
+        <div class="absolute inset-0 flex flex-col">
+          <!-- Preview Container -->
+          <div
+            class="flex-1 flex items-center justify-center bg-white rounded-lg border-2 border-dashed border-gray-500"
+          >
+            <div class="relative inline-block">
+              <!-- Image Container -->
+              <div
+                class="relative overflow-hidden rounded-lg shadow-md border-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800"
+              >
+                <img
+                  [src]="imageUrl()"
+                  class="max-w-[280px] max-h-[240px] min-w-[200px] min-h-[150px] object-contain p-2 rounded-lg"
+                  alt="{{ 'image.alt' | transloco }}"
+                />
+              </div>
+              <!-- Delete Button - Estilo mejorado con Tailwind -->
+              <button
+                type="button"
+                (click)="removeFile()"
+                class="absolute top-0 right-2 text-red-500 bg-transparent transition-all duration-200 p-1 rounded-full"
+                pTooltip="{{ 'image.delete' | transloco }}"
+                tooltipPosition="top"
+              >
+                <svg [lucideIcon]="getIcon('trash-2')" class="w-5 h-5"></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Info Message - Fijo en la parte inferior -->
+          <div class="mt-auto pt-3">
+            <p class="text-sm text-gray-600 dark:text-gray-400 text-center">
+              <svg
+                [lucideIcon]="getIcon('info')"
+                class="w-4 h-4 inline mr-1"
+              ></svg>
+              {{ "image.info" | transloco }}
+            </p>
+          </div>
+        </div>
+      }
+      <!-- Estado cuando no hay imagen -->
+      @if (!imageUrl() && !loadingImage()) {
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            [class.border-red-500]="
+              form.get('image')?.invalid && form.get('image')?.touched
+            "
+            [class.border-gray-500]="
+              !(form.get('image')?.invalid && form.get('image')?.touched)
+            "
+            class="w-full h-full flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg bg-white dark:bg-gray-800/50"
+          >
+            <svg
+              [lucideIcon]="getIcon('images')"
+              class="w-12 h-12 text-gray-400 dark:text-gray-500 mb-3"
+            ></svg>
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+              <span class="block font-medium">{{
+                "image.nodata.title" | transloco
+              }}</span>
+              <span class="block text-xs mt-1 opacity-75">
+                {{ "image.nodata.subtitle" | transloco }}
+              </span>
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+    @if (form.get("image")?.invalid && form.get("image")?.touched) {
+      <div class="text-red-500 text-sm mt-2 mb-2">
+        {{ "image.required" | transloco }}
+      </div>
+    }
+  </div>
+</form>
+<style>
+  /* Estilos para override de PrimeNG */
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+</style>

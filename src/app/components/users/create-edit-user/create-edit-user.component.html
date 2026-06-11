@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    <app-text-field
+      id="full_name"
+      [label]="t('fields.name.title')"
+      [control]="getFormControl('full_name')"
+      [errorMessages]="{
+        required: t('fields.name.required'),
+        minlength: t('fields.name.minlength'),
+        maxlength: t('fields.name.maxlength'),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="email"
+      [label]="t('fields.email.title')"
+      [control]="getFormControl('email')"
+      [errorMessages]="{
+        required: t('fields.email.required'),
+        email: t('fields.email.email'),
+      }"
+    ></app-text-field>
+  </div>
+  <div class="grid grid-cols-2 gap-4 w-[750px]">
+    @if (!isEdit()) {
+      <app-text-field
+        id="password"
+        [label]="t('fields.password.title')"
+        [control]="getFormControl('password')"
+        [type]="'password'"
+        [errorMessages]="{
+          required: t('fields.password.required'),
+          minlength: t('fields.password.minlength'),
+          maxlength: t('fields.password.maxlength'),
+          noLowerCase: t('fields.password.noLowerCase'),
+          noUpperCase: t('fields.password.noUpperCase'),
+          noNumber: t('fields.password.noNumber'),
+          noSpecialChar: t('fields.password.noSpecialChar'),
+        }"
+      ></app-text-field>
+    }
+    <app-text-field
+      id="client"
+      [label]="t('fields.client.title')"
+      [control]="getFormControl('client')"
+      [errorMessages]="{
+        required: t('fields.client.required'),
+      }"
+    ></app-text-field>
+  </div>
+</form>

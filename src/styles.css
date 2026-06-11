@@ -1,0 +1,218 @@
+/* You can add global styles to this file, and also import other style files */
+
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+/* Estilos globales para garantizar que el footer se mantenga en la parte inferior */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima del viewport */
+}
+
+/* Esto asegura que el contenedor principal ocupe al menos toda la altura de la pantalla */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Clase para el contenedor principal con flexbox */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.rotate-on-hover:hover {
+  animation: rotate 0.5s linear;
+}
+
+/* La clase que hace que el footer se mantenga en la parte inferior */
+.mt-auto {
+  margin-top: auto;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.p-dialog-title {
+  color: rgb(55, 65, 81) !important;
+  font-weight: bold !important;
+  margin-left: 20px;
+}
+.p-dialog .p-dialog-header {
+  padding: 4px;
+}
+
+.p-button-icon-only.p-button-rounded:hover {
+  background: #d1d5db;
+}
+
+/* Estilos globales para el paginador */
+.p-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: rgb(232 232 232 / var(--tw-text-opacity, 1));
+  color: var(--p-paginator-color);
+  padding: var(--p-paginator-padding);
+  border-radius: var(--p-paginator-border-radius);
+  gap: var(--p-paginator-gap);
+}
+
+.dark .p-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #18181b;
+  color: var(--p-paginator-color);
+  padding: var(--p-paginator-padding);
+  border-radius: var(--p-paginator-border-radius);
+  gap: var(--p-paginator-gap);
+}
+
+.dark .p-paginator-page.p-paginator-page-selected {
+  background: #1f2937;
+  pointer-events: none;
+  color: white !important;
+}
+
+.p-paginator-page.p-paginator-page-selected {
+  background: #9ca3af;
+  pointer-events: none;
+  color: white !important;
+}
+
+.dark .p-paginator-current {
+  color: #d1d5db;
+}
+
+.p-paginator-current {
+  color: #343b46;
+}
+
+.dark .p-icon {
+  display: inline-block;
+  vertical-align: baseline;
+  color: #d1d5db;
+}
+
+.p-icon {
+  display: inline-block;
+  vertical-align: baseline;
+  color: #343b46;
+}
+
+.p-paginator-page:hover,
+.p-paginator-next:hover,
+.p-paginator-last:hover,
+.p-paginator-first:hover,
+.p-paginator-prev:hover {
+  background: #d1d5db !important;
+}
+
+.dark .p-paginator-page:hover,
+.dark .p-paginator-next:hover,
+.dark .p-paginator-last:hover,
+.dark .p-paginator-first:hover,
+.dark .p-paginator-prev:hover {
+  background: #343b46 !important;
+}
+
+.p-select-option.p-select-option-selected {
+  background: #9ca3af;
+  color: white;
+}
+
+.p-select-option.p-select-option-selected:hover {
+  background: #9ca3af;
+  color: white;
+}
+
+.dark .p-select-option.p-select-option-selected {
+  background: #1f2937;
+  pointer-events: none;
+  color: white;
+}
+
+.dark .p-select-option.p-select-option-selected:hover {
+  background: #1f2937;
+  pointer-events: none;
+  color: white;
+}
+
+:root {
+  --p-select-focus-border-color: #1f2937 !important;
+}
+
+.dark {
+  --p-select-focus-border-color: #ffffff !important;
+}
+
+.p-select-option:hover {
+  background: #d1d5db;
+}
+
+.dark .p-select-option:hover {
+  background: #343b46;
+}
+
+.p-select-option {
+  color: #343b46;
+}
+
+.dark .p-select-option {
+  color: #d1d5db;
+}
+
+.p-paginator-page,
+.p-paginator-next,
+.p-paginator-last,
+.p-paginator-first,
+.p-paginator-prev {
+  color: #343b46;
+}
+
+.dark .p-paginator-page,
+.dark .p-paginator-next,
+.dark .p-paginator-last,
+.dark .p-paginator-first,
+.dark .p-paginator-prev {
+  color: #d1d5db;
+}
+
+/* Estilo solo para el dropdown del paginador */
+.p-paginator .p-select-list {
+  flex-direction: column;
+}

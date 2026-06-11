@@ -1,0 +1,63 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <app-select
+    [placeholder]="
+      'components.chatbot_config.create.fields.user.title' | transloco
+    "
+    [options]="users()"
+    [isSearchable]="true"
+    formControlName="user_id"
+    [control]="getFormControl('user_id')"
+    [errorMessages]="{
+      required:
+        ('components.chatbot_config.create.fields.user.required' | transloco),
+    }"
+  ></app-select>
+
+  <div formArrayName="events" class="space-y-4">
+    @for (event of eventsArray.controls; track $index; let i = $index) {
+      <div
+        [formGroupName]="i"
+        class="border p-3 rounded-lg bg-gray-50 dark:bg-gray-800 space-y-3 relative"
+      >
+        <!-- Botón eliminar -->
+        <button
+          type="button"
+          (click)="removeEventRow(i)"
+          class="absolute top-2 right-2 text-red-500 hover:text-red-700"
+          [pTooltip]="t('remove')"
+          tooltipPosition="top"
+        >
+          ✕
+        </button>
+
+        <app-text-field
+          [label]="t('fields.event_name.title')"
+          [control]="getEventControl(i, 'event_name')"
+          placeholder="site_visits"
+          [errorMessages]="{
+            required: t('fields.event_name.required'),
+            minlength: t('fields.event_name.minlength'),
+          }"
+        ></app-text-field>
+
+        <app-text-field
+          [label]="t('fields.label.title')"
+          [control]="getEventControl(i, 'label')"
+          [placeholder]="t('fields.label.placeholder')"
+          [errorMessages]="{
+            required: t('fields.label.required'),
+            minlength: t('fields.label.minlength'),
+          }"
+        ></app-text-field>
+      </div>
+    }
+  </div>
+
+  <button
+    type="button"
+    (click)="addEventRow()"
+    class="mt-2 text-blue-600 hover:text-blue-800 text-sm"
+  >
+    + {{ t("add") }}
+  </button>
+</form>

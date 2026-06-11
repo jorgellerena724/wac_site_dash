@@ -1,0 +1,25 @@
+<!-- app.component.html -->
+<app-modal></app-modal>
+<app-notification></app-notification>
+
+@if (showLayout()) {
+  @defer {
+    <div class="flex flex-col min-h-screen relative">
+      <app-sidebar></app-sidebar>
+      <main
+        [ngClass]="mainClasses()"
+        class="flex-1 p-4 transition-all duration-300 overflow-x-hidden"
+      >
+        <div class="h-full w-full mx-auto">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+      <app-footer
+        [ngClass]="footerClasses()"
+        class="transition-all duration-300"
+      ></app-footer>
+    </div>
+  }
+} @else {
+  <router-outlet></router-outlet>
+}

@@ -1,0 +1,197 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4 grid grid-cols-1 gap-4">
+    <app-text-field
+      id="title"
+      [label]="t('fields.name.title')"
+      [control]="getFormControl('title')"
+      [errorMessages]="{
+        required: t('fields.name.required'),
+        minlength: t('fields.name.minlength'),
+      }"
+    ></app-text-field>
+  </div>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <!-- Calificación por Estrellas (soporta medias estrellas: 0.5, 1, 1.5 ... 5) -->
+  <div class="mb-4">
+    <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+      {{ t('fields.rating.title') }}
+    </label>
+    <div
+      class="flex items-center gap-1.5 py-1"
+      (mouseleave)="onStarMouseLeave()"
+    >
+      @for (star of [1, 2, 3, 4, 5]; track star) {
+        <button
+          type="button"
+          (mousemove)="onStarMouseMove($event, star)"
+          (click)="onStarClick($event, star)"
+          class="focus:outline-none transition-transform duration-150 hover:scale-125 cursor-pointer bg-transparent border-none p-0 relative"
+          [title]="(hoverRating() ?? form.get('star_rating')?.value ?? 0) + ' ' + t('fields.rating.stars')"
+        >
+          <!-- SVG con clip-path dinámico para soporte decimal de estrella -->
+          <svg
+            class="w-8 h-8"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <clipPath [id]="'clip-review-' + star">
+                <rect x="0" y="0" [attr.width]="getStarWidth(star)" height="20" />
+              </clipPath>
+            </defs>
+
+            <!-- Estrella de fondo (vacía / gris) -->
+            <path
+              class="transition-colors duration-150 text-gray-300 dark:text-gray-600"
+              fill="currentColor"
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            />
+
+            <!-- Estrella rellena (con clipPath) encima -->
+            <path
+              fill="#f59e0b"
+              [attr.clip-path]="'url(#clip-review-' + star + ')'"
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+            />
+          </svg>
+        </button>
+      }
+      <span class="text-sm font-semibold ml-2 text-gray-500 dark:text-gray-400">
+        {{ form.get('star_rating')?.value != null
+            ? (form.get('star_rating')?.value + ' / 5')
+            : t('fields.rating.none') }}
+      </span>
+    </div>
+  </div>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <app-text-field
+    id="description"
+    [label]="t('fields.description.title')"
+    [control]="getFormControl('description')"
+    [isTextArea]="true"
+    textAreaHeight="h-56"
+    [errorMessages]="{
+      required: t('fields.description.required'),
+      minlength: t('fields.description.minlength'),
+    }"
+  ></app-text-field>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+  <div class="field">
+    <!-- File Upload -->
+    <app-file-upload
+      #fileUpload
+      [label]="t('fields.image.title')"
+      accept="image/*"
+      [maxFileSize]="1024 * 1024"
+      fileUploadText="{{ 'image.select' | transloco }}"
+      [fileRecommendation]="t('fields.image.recommendation')"
+      (fileSelected)="onFileUploaded($event)"
+      (fileRemoved)="removeFile()"
+      (fileError)="onFileError($event)"
+    ></app-file-upload>
+    <!-- Contenedor de altura fija para la previsualización -->
+    <div class="mt-4 relative h-[240px]">
+      <!-- Loading state -->
+      @if (loadingImage()) {
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg"
+        >
+          <div class="text-center">
+            <div
+              class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"
+            ></div>
+            <span class="text-gray-600 dark:text-gray-300 text-sm">{{
+              "image.loading" | transloco
+            }}</span>
+          </div>
+        </div>
+      }
+      <!-- Image Preview Section -->
+      @if (imageUrl() && !loadingImage()) {
+        <div class="absolute inset-0 flex flex-col">
+          <!-- Preview Container -->
+          <div
+            class="flex-1 flex items-center justify-center bg-white rounded-lg border-2 border-dashed border-gray-500"
+          >
+            <div class="relative inline-block">
+              <!-- Image Container -->
+              <div
+                class="relative overflow-hidden rounded-lg shadow-md border-2 border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800"
+              >
+                <img
+                  [src]="imageUrl()"
+                  class="max-w-[280px] max-h-[240px] min-w-[200px] min-h-[150px] object-contain p-2 rounded-lg"
+                  alt="{{ 'image.alt' | transloco }}"
+                />
+              </div>
+              <!-- Delete Button - Estilo mejorado con Tailwind -->
+              <button
+                type="button"
+                (click)="removeFile()"
+                class="absolute top-0 right-2 text-red-500 bg-transparent transition-all duration-200 p-1 rounded-full"
+                pTooltip="{{ 'image.delete' | transloco }}"
+                tooltipPosition="top"
+              >
+                <svg [lucideIcon]="getIcon('trash-2')" class="w-5 h-5"></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Info Message - Fijo en la parte inferior -->
+          <div class="mt-auto pt-3">
+            <p class="text-sm text-gray-600 dark:text-gray-400 text-center">
+              <svg
+                [lucideIcon]="getIcon('info')"
+                class="w-4 h-4 inline mr-1"
+              ></svg>
+              {{ "image.info" | transloco }}
+            </p>
+          </div>
+        </div>
+      }
+      <!-- Estado cuando no hay imagen -->
+      @if (!imageUrl() && !loadingImage()) {
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div
+            [class.border-red-500]="
+              form.get('image')?.invalid && form.get('image')?.touched
+            "
+            [class.border-gray-500]="
+              !(form.get('image')?.invalid && form.get('image')?.touched)
+            "
+            class="w-full h-full flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg bg-white dark:bg-gray-800/50"
+          >
+            <svg
+              [lucideIcon]="getIcon('images')"
+              class="w-12 h-12 text-gray-400 dark:text-gray-500 mb-3"
+            ></svg>
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+              <span class="block font-medium">{{
+                "image.nodata.title" | transloco
+              }}</span>
+              <span class="block text-xs mt-1 opacity-75">
+                {{ "image.nodata.subtitle" | transloco }}
+              </span>
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+    @if (form.get("image")?.invalid && form.get("image")?.touched) {
+      <div class="text-red-500 text-sm mt-2 mb-2">
+        {{ "image.required" | transloco }}
+      </div>
+    }
+  </div>
+</form>
+
+<style>
+  /* Estilos para override de PrimeNG */
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+</style>

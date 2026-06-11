@@ -1,0 +1,211 @@
+<div class="relative w-full font-sans">
+  <!-- Texto estático encima del campo -->
+  <div
+    class="text-black text-sm mb-1 mt-3 dark:text-[rgb(209,213,219)] font-bold"
+  >
+    {{ label() || placeholder() }}
+  </div>
+
+  <!-- Contenedor del select -->
+  <div
+    class="flex justify-between items-center p-2 border w-full px-2.5 py-1.5 transition-colors duration-150 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-400 focus-within:border-blue-500 cursor-pointer min-h-[2.5rem] text-gray-900 bg-white border-gray-800 dark:border-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+    (click)="toggleDropdown()"
+    [class.open]="isOpen()"
+    [class.disabled-select]="isDisabled()"
+    [ngClass]="{
+      'border-red-500 focus:ring-red-500 focus:border-red-500':
+        control()?.invalid && control()?.touched,
+      'border-green-500 focus:ring-green-500 focus:border-green-500':
+        control()?.valid && control()?.touched,
+    }"
+  >
+    <div class="selected-value">
+      <span
+        [class.text-gray-400]="!hasSelectedValues()"
+        [class.text-gray-900]="hasSelectedValues()"
+      >
+        {{ displayValue() }}
+      </span>
+    </div>
+    <div
+      class="text-[0.8rem] transition-transform duration-200"
+      [class.rotate-180]="isOpen()"
+    >
+      <svg
+        [lucideIcon]="getIcon('chevron-down')"
+        class="w-5 h-5 text-gray-800 dark:text-gray-800"
+      ></svg>
+    </div>
+  </div>
+
+  <!-- Dropdown -->
+  @if (isOpen()) {
+    <div
+      class="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded mt-1 max-h-[200px] overflow-y-auto z-[2000] shadow-md custom-scrollbar"
+    >
+      @if (isSearchable()) {
+        <input
+          #filterInput
+          type="text"
+          class="w-full p-2 border-0 border-b border-gray-300 mb-2 bg-gray-200 text text-gray-800"
+          placeholder="Buscar..."
+          [value]="searchTerm()"
+          (input)="onInputChange($event)"
+          (keydown)="handleKeyDown($event)"
+          (click)="$event.stopPropagation()"
+        />
+      }
+      <!-- Custom option -->
+      @if (showCustomOption()) {
+        <div
+          class="flex items-center gap-2 p-2 cursor-pointer hover:bg-gray-100"
+          (click)="onCustomOptionClick()"
+        >
+          <div class="custom-option">
+            <span class="font-semibold text-green-500">Crear nuevo:</span>
+            <span class="text-gray-800 ml-2">{{ searchTerm() }}</span>
+          </div>
+        </div>
+      }
+      <!-- Regular options list -->
+      @for (option of regularOptions(); track trackByFn($index, option)) {
+        <div
+          class="flex items-center gap-2 p-2 cursor-pointer hover:bg-gray-100 text-gray-500"
+          [class.disabled]="isOptionDisabled(option)"
+          (click)="!isOptionDisabled(option) && onOptionClick(option)"
+        >
+          @if (multiple()) {
+            <input
+              type="checkbox"
+              [checked]="isSelected(option)"
+              [disabled]="isOptionDisabled(option)"
+              (click)="$event.stopPropagation()"
+              (change)="!isOptionDisabled(option) && toggleOption(option)"
+              class="flex-shrink-0"
+            />
+            {{ option.label }}
+          } @else {
+            {{ option.label }}
+          }
+        </div>
+      }
+      <!-- Mensajes de estado -->
+      <div class="p-2 text-center">
+        <!-- Mensaje de carga -->
+        @if (isLoading() && regularOptions().length === 0) {
+          <div
+            class="flex items-center justify-center gap-2 p-2 text-[0.9rem] text-gray-600"
+          >
+            <svg class="spinner" viewBox="0 0 50 50">
+              <circle
+                class="path"
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="5"
+              ></circle>
+            </svg>
+            Cargando más resultados...
+          </div>
+        }
+        <!-- Mensaje de sin resultados -->
+        @if (
+          !isLoading() && isAllDataLoaded() && regularOptions().length === 0
+        ) {
+          <div
+            class="flex items-center justify-center gap-2 p-2 text-[0.9rem] text-gray-500 italic"
+          >
+            No se encontraron coincidencias
+          </div>
+        }
+        <!-- Nuevo mensaje cuando el array de opciones está vacío -->
+        @if (options().length === 0) {
+          <div
+            class="flex items-center justify-center gap-2 p-2 text-[0.9rem] text-gray-500 italic"
+          >
+            No hay nada que mostrar, asegúrese de haber registrado la
+            información necesaria.
+          </div>
+        }
+      </div>
+
+      <!-- Pagination controls -->
+      @if (usePagination() && totalPages() > 1) {
+        <div
+          class="flex justify-between items-center p-2 border-t border-gray-300"
+        >
+          <button
+            class="bg-transparent border-0 cursor-pointer px-2 py-1 rounded hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="currentPage() === 1"
+            (click)="$event.stopPropagation(); previousPage()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-left')" class="w-4 h-4"></svg>
+          </button>
+          <span class="text-sm">
+            {{ currentPage() }} de {{ totalPages() }}
+          </span>
+          <button
+            class="bg-transparent border-0 cursor-pointer px-2 py-1 rounded hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="currentPage() === totalPages()"
+            (click)="$event.stopPropagation(); nextPage()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-right')" class="w-4 h-4"></svg>
+          </button>
+        </div>
+      }
+    </div>
+  }
+  <!-- Mensajes de error -->
+  @if (shouldShowError()) {
+    <div class="mt-1 text-sm text-red-500 max-h-20 overflow-y-auto">
+      <ul class="list-disc pl-4 space-y-1">
+        @for (error of getErrorMessages(); track $index) {
+          <li>{{ error }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>
+<style>
+  input:focus,
+  label:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    width: 8px; /* Ancho de la scrollbar */
+  }
+
+  .custom-scroll::-webkit-scrollbar-track {
+    background-color: #9ca3af; /* Color de fondo del track */
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: #9ca3af; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid #f1f1f1; /* Espacio alrededor de la barra */
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af; /* Color al pasar el mouse */
+  }
+
+  /* Para Firefox */
+  .custom-scroll {
+    scrollbar-width: thin; /* Opciones: auto, thin, none */
+    background-color: #9ca3af #f1f1f1; /* thumb y track respectivamente */
+  }
+
+  .disabled-select {
+    opacity: 0.6;
+    cursor: not-allowed !important;
+    color: black !important;
+    background-color: #d1d5db !important;
+  }
+
+  .disabled-select * {
+    cursor: not-allowed !important;
+  }
+</style>

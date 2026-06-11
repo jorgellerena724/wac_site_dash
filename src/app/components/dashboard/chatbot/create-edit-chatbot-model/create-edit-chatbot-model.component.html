@@ -1,0 +1,54 @@
+<!-- update-header.component.html -->
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4">
+    <app-text-field
+      id="name"
+      label="{{
+        'components.chatbot_model.create.fields.name.title' | transloco
+      }}"
+      [control]="getFormControl('name')"
+      [errorMessages]="{
+        required: ( 'components.chatbot_model.create.fields.name.required' | transloco ),
+        minlength: ( 'components.chatbot_model.create.fields.name.minlength' | transloco ),
+      }"
+    ></app-text-field>
+  </div>
+  <div class="mb-4 grid grid-cols-2 gap-4">
+    <app-text-field
+      id="provider"
+      label="{{
+        'components.chatbot_model.create.fields.provider.title' | transloco
+      }}"
+      [control]="getFormControl('provider')"
+      [errorMessages]="{
+        required: ( 'components.chatbot_model.create.fields.provider.required' | transloco ),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="daily_token_limit"
+      label="{{
+        'components.chatbot_model.create.fields.daily_token_limit.title'
+          | transloco
+      }}"
+      type="number"
+      [control]="getFormControl('daily_token_limit')"
+      [errorMessages]="{
+        required: ( 'components.chatbot_model.create.fields.daily_token_limit.required' | transloco ),
+        min: ( 'components.chatbot_model.create.fields.daily_token_limit.min' | transloco ),
+      }"
+    ></app-text-field>
+  </div>
+
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+</form>
+<style>
+  /* Estilos para override de PrimeNG */
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+</style>

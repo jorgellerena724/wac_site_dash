@@ -1,0 +1,1503 @@
+{
+  "notifications": {
+    "login": {
+      "success": "Authentication Successful.",
+      "error": {
+        "unexpected": "An unexpected error has occurred. Please try again later.",
+        "badRequest": "Bad request. Check the submitted data.",
+        "invalidCredentials": "Invalid credentials. Please check your email and password.",
+        "serverError": "Internal server error. Please try again later.",
+        "connectionError": "Could not connect to the server. Please check your connection and try again later.",
+        "invalidForm": "Invalid form. Please complete all required fields."
+      }
+    },
+    "session": {
+      "inactivityWarning": "Your session will expire soon due to inactivity.",
+      "logoutSuccess": "Session closed successfully."
+    },
+    "header": {
+      "success": {
+        "updated": "Header updated successfully."
+      },
+      "error": {
+        "update": "Error updating header.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading image.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "formInvalid": "Check the form fields."
+      }
+    },
+    "users": {
+      "success": {
+        "created": "User created successfully.",
+        "updated": "User updated successfully.",
+        "passwordChanged": "Password updated successfully.",
+        "deleted": "User deleted successfully."
+      },
+      "error": {
+        "create": "Error creating user.",
+        "update": "Error updating user.",
+        "changePassword": "Error updating password.",
+        "delete": "Error deleting user.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields.",
+        "selfDelete": "You cannot delete your own user while authenticated.",
+        "emailExists": "The email already exists in the system."
+      }
+    },
+    "contact": {
+      "success": {
+        "updated": "Contact information updated successfully."
+      },
+      "error": {
+        "update": "Error updating contact.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields."
+      }
+    },
+    "carousel": {
+      "success": {
+        "updated": "Carousel updated successfully.",
+        "statusUpdated": "Status updated"
+      },
+      "error": {
+        "update": "Error updating carousel.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "statusUpdate": "Error updating status."
+      }
+    },
+    "news": {
+      "success": {
+        "created": "News registered successfully.",
+        "updated": "News updated successfully.",
+        "deleted": "News deleted successfully.",
+        "statusUpdated": "Status updated",
+        "orderUpdated": "Order updated successfully"
+      },
+      "error": {
+        "create": "Error registering news.",
+        "update": "Error updating news.",
+        "delete": "Error deleting news.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading multimedia file",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "duplicateName": "A news with this name already exists.",
+        "statusUpdate": "Error updating status.",
+        "orderUpdate": "Error updating order",
+        "cannotDelete": "Cannot delete the product"
+      }
+    },
+    "company": {
+      "success": {
+        "updated": "Company data updated successfully.",
+        "statusUpdated": "Status updated"
+      },
+      "error": {
+        "update": "Error updating.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "statusUpdate": "Error updating status."
+      }
+    },
+    "managers": {
+      "success": {
+        "created": "Manager registered successfully.",
+        "updated": "Manager updated successfully.",
+        "deleted": "Manager deleted successfully."
+      },
+      "error": {
+        "create": "Error registering manager.",
+        "update": "Error updating manager.",
+        "delete": "Error deleting manager.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server."
+      }
+    },
+    "reviews": {
+      "success": {
+        "created": "Review registered successfully.",
+        "updated": "Review updated successfully.",
+        "deleted": "Review deleted successfully.",
+        "imported": "{{created}} reviews imported, {{skipped}} skipped."
+      },
+      "error": {
+        "create": "Error registering review.",
+        "update": "Error updating review.",
+        "delete": "Error deleting review.",
+        "import": "Error importing reviews.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server."
+      }
+    },
+    "statistics": {
+      "success": {
+        "created": "Metric created successfully.",
+        "updated": "Metric updated successfully.",
+        "deleted": "Metric deleted successfully.",
+        "activated": "Status updated",
+        "deactivated": "Status updated"
+      },
+      "error": {
+        "create": "Error creating metric.",
+        "update": "Error updating metric.",
+        "delete": "Error deleting metric.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields.",
+        "toggle": "Error changing event status.",
+        "activate": "Error activating event.",
+        "deactivate": "Error deactivating event."
+      }
+    },
+    "manager-category": {
+      "success": {
+        "created": "Category registered successfully.",
+        "updated": "Category updated successfully.",
+        "deleted": "Category deleted successfully."
+      },
+      "error": {
+        "create": "Error registering category.",
+        "update": "Error updating category.",
+        "delete": "Error deleting category.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields.",
+        "duplicateName": "A category with this name already exists."
+      }
+    },
+    "categories": {
+      "success": {
+        "created": "Category registered successfully.",
+        "updated": "Category updated successfully.",
+        "deleted": "Category deleted successfully."
+      },
+      "error": {
+        "create": "Error registering category.",
+        "update": "Error updating category.",
+        "delete": "Error deleting category.",
+        "productAsociated": "The category cannot be deleted because it has associated products.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields.",
+        "duplicateName": "A category with this name already exists."
+      }
+    },
+    "products": {
+      "success": {
+        "created": "Product registered successfully.",
+        "updated": "Product updated successfully.",
+        "deleted": "Product deleted successfully.",
+        "statusUpdated": "Status updated"
+      },
+      "error": {
+        "create": "Error registering product.",
+        "update": "Error updating product.",
+        "delete": "Error deleting product.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading product image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "statusUpdate": "Error updating status.",
+        "cannotDelete": "Cannot delete the product"
+      }
+    },
+    "publications": {
+      "success": {
+        "created": "Publication registered successfully.",
+        "updated": "Publication updated successfully.",
+        "deleted": "Publication deleted successfully.",
+        "statusUpdated": "Status updated"
+      },
+      "error": {
+        "create": "Error registering publication.",
+        "update": "Error updating publication.",
+        "delete": "Error deleting publication.",
+        "load": "Error loading information.",
+        "loadImage": "Error loading publication image.",
+        "formInvalid": "Check the form fields.",
+        "duplicateImage": "The image you are trying to upload is already on the server.",
+        "statusUpdate": "Error updating status.",
+        "cannotDelete": "Cannot delete the publication"
+      }
+    },
+    "publication-category": {
+      "success": {
+        "created": "Category registered successfully.",
+        "updated": "Category updated successfully.",
+        "deleted": "Category deleted successfully."
+      },
+      "error": {
+        "create": "Error registering category.",
+        "update": "Error updating category.",
+        "delete": "Error deleting category.",
+        "load": "Error loading information.",
+        "formInvalid": "Check the form fields.",
+        "duplicateName": "A category with this name already exists."
+      }
+    },
+    "chatbot_config": {
+      "success": {
+        "created": "Chatbot configuration created successfully",
+        "updated": "Chatbot configuration updated successfully",
+        "deleted": "Chatbot configuration deleted successfully"
+      },
+      "error": {
+        "formInvalid": "Please fill in all required fields",
+        "create": "Error creating chatbot configuration",
+        "update": "Error updating chatbot configuration",
+        "delete": "Error deleting chatbot configuration",
+        "load": "Error loading chatbot configurations",
+        "duplicateName": "A model with this name already exists.",
+        "cannotDelete": "The model cannot be deleted; it is being used in a configuration."
+      }
+    },
+    "chatbot_model": {
+      "success": {
+        "created": "Chatbot configuration created successfully",
+        "updated": "Chatbot configuration updated successfully",
+        "deleted": "Chatbot configuration deleted successfully"
+      },
+      "error": {
+        "formInvalid": "Please fill in all required fields",
+        "create": "Error creating chatbot configuration",
+        "update": "Error updating chatbot configuration",
+        "delete": "Error deleting chatbot configuration",
+        "load": "Error loading chatbot configurations",
+        "duplicateName": "A model with this name already exists."
+      }
+    },
+    "general": {
+      "copied": "Copied to clipboard"
+    }
+  },
+  "language": {
+    "es": "Spanish",
+    "en": "English"
+  },
+  "status": {
+    "active": "Activated",
+    "inactive": "Deactivated"
+  },
+  "footer": {
+    "rights_reserved": "All rights reserved",
+    "whatsapp": "Contact us on WhatsApp",
+    "email": "Send us an email",
+    "website": "Visit our website"
+  },
+  "login": {
+    "email": {
+      "title": "Email",
+      "placeholder": "Email",
+      "required": "The email is required.",
+      "Invalid": "The email address has an invalid format."
+    },
+    "password": {
+      "title": "Password",
+      "placeholder": "Password",
+      "required": "The password is required."
+    },
+    "loading": "Accessing...",
+    "load": "Login →",
+    "notfound": "No user was found with the credentials provided."
+  },
+  "navbar": {
+    "title": "Professional Business Website",
+    "logo": "Logo",
+    "logout": "Logout",
+    "changepass": "Change password",
+    "name": "Name",
+    "client": "Client",
+    "user_menu": "User menu",
+    "save_information": "Save information",
+    "restore_information": "Restore information",
+    "backup": {
+      "generating": "Generating backup...",
+      "download_success": "Backup downloaded successfully",
+      "download_error": "Error downloading backup",
+      "download_error_message": "Error downloading backup: {{message}}",
+      "restore_confirm": "Are you sure you want to restore the backup? This will overwrite the current database and uploads folder.",
+      "restoring": "Restoring backup...",
+      "restore_success": "Backup restored successfully. Please reload the page.",
+      "restore_error": "Error restoring backup",
+      "restore_error_message": "Error restoring backup: {{message}}",
+      "invalid_file": "Please select a ZIP file"
+    },
+    "confirm_restore": "Are you sure you want to restore the backup?<br>This will overwrite the current database and uploads folder.",
+    "confirm_restore_title": "Confirm Restoration",
+    "confirm_restore_button": "Restore",
+    "cancel_button": "Cancel",
+    "mobile": {
+      "admin": "Administration",
+      "header": "Header",
+      "home": "Home",
+      "carousel": "Carousel",
+      "news": "News",
+      "about": "About",
+      "company": "Company",
+      "manager": "Managers",
+      "review": "Reviews",
+      "products": "Products",
+      "category": "Categories",
+      "publications": "Publications",
+      "publications-category": "Categories",
+      "offers": "Offers",
+      "contact": "Contact Us",
+      "info": "Information",
+      "users": "Users"
+    }
+  },
+  "sidebar": {
+    "admin": "Administration",
+    "header": "Header",
+    "header_info": "Name and logo",
+    "home": "Home",
+    "carousel": "Carousel",
+    "news": "News",
+    "about": "About",
+    "company": "Company",
+    "chatbot": "Chatbot",
+    "chatbot_models": "Manage AI models",
+    "chatbot_config": "Configuration",
+    "manager": "Managers",
+    "manager-category": "Categories",
+    "review": "Reviews",
+    "products": "Products",
+    "publications": "Publications",
+    "manage-publications": "Manage publications",
+    "publications-category": "Categories",
+    "category": "Categories",
+    "offers": "Offers",
+    "contact": "Contact Us",
+    "info": "Information",
+    "users": "Users",
+    "users_manage": "Manage users",
+    "statistics": "Statistics",
+    "statistics_charts": "Charts",
+    "statistics_config": "Configuration",
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "admin": {
+    "header": {
+      "title": "Administration Panel",
+      "subtitle": "Customize the appearance of your business website"
+    },
+    "body": {
+      "title": "Welcome to your Control Center",
+      "subtitle": "As an administrator, you have full access to customize the layout and appearance of your business website to your specific brand needs.",
+      "left": {
+        "first": {
+          "title": "100% Customizable Template",
+          "text": "Completely customize our professional template to suit your exact needs. Fine-tune every element to your brand vision to create a unique web presence that stands out from your competition."
+        },
+        "second": {
+          "title": "Content Structure",
+          "text": "Configure your website sections to strategically highlight your products, services, and unique values."
+        }
+      },
+      "right": {
+        "first": {
+          "title": "Language Selection",
+          "text": "Offer a multilingual experience on your website. Select from a variety of languages ​​to meet the needs of your global audience and improve accessibility."
+        },
+        "second": {
+          "title": "Responsive Design",
+          "text": "Your website automatically adapts to any screen size, ensuring an optimal experience on mobile devices, tablets, and desktops with state-of-the-art responsive technology."
+        }
+      }
+    },
+    "footer": "Real-time changes without technical knowledge"
+  },
+  "components": {
+    "chatbot_config": {
+      "list": {
+        "title": "Chatbot Configurations",
+        "table": {
+          "name": "User Name",
+          "model": "AI Model Name",
+          "status": "Status",
+          "tokens_remaining": "Tokens Remaining",
+          "tokens_limit": "Token Limit"
+        },
+        "errors": {}
+      },
+      "create": {
+        "title": "Register Chatbot Configuration",
+        "fields": {
+          "user": {
+            "title": "User",
+            "required": "User is required",
+            "status": "Status",
+            "tokens_remaining": "Tokens Remaining",
+            "tokens_limit": "Token Limit"
+          },
+          "apiKey": {
+            "title": "API Key",
+            "required": "API key is required",
+            "minlength": "API key must be at least 20 characters"
+          },
+          "model": {
+            "title": "AI Model",
+            "required": "Model is required"
+          },
+          "prompt": {
+            "title": "System Prompt",
+            "required": "System prompt is required",
+            "minlength": "Prompt must be at least 10 characters"
+          },
+          "temperature": {
+            "title": "Temperature",
+            "required": "The temperature is required",
+            "min": "The minimun temperature is 0.1",
+            "max": "The maximun temperature is 1.0"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit Chatbot Configuration"
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "chatbot_model": {
+      "list": {
+        "title": "AI Models",
+        "table": {
+          "name": "Model Name",
+          "provider": "Provider",
+          "daily_token_limit": "Daily Token Limit"
+        }
+      },
+      "create": {
+        "title": "Register AI Model",
+        "fields": {
+          "name": {
+            "title": "Model Name",
+            "required": "AI Model is required",
+            "minlength": "Name must be at least 3 characters."
+          },
+          "provider": {
+            "title": "Provider",
+            "required": "Provider name is required"
+          },
+          "daily_token_limit": {
+            "title": "Daily Token Limit",
+            "required": "Daily token limit is required",
+            "min": "Limit must be at least 1"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modify AI Model"
+      }
+    },
+    "statistics": {
+      "title": "Statistics",
+      "trend": "Period trend",
+      "totals": "Period totals",
+      "proportion": "Events proportion",
+      "server_time": "Server time",
+      "ranges": {
+        "today": "Today",
+        "week": "This week",
+        "month": "This month",
+        "custom": "Custom"
+      },
+      "chart_labels": {
+        "total": "Total",
+        "events": {
+          "site_visits": "Site visits",
+          "bookings_created": "Bookings created",
+          "bookings_cancelled": "Bookings cancelled",
+          "bookings_rescheduled": "Bookings rescheduled",
+          "payments_completed": "Payments completed",
+          "payments_refunded": "Payments refunded"
+        }
+      },
+      "configure": "Configure events",
+      "config": {
+        "title": "Metrics Management",
+        "table": {
+          "client": "Client",
+          "event_name": "Event name",
+          "label": "Label",
+          "status": "Status"
+        }
+      },
+      "create": {
+        "title": "Create metric event",
+        "remove": "Remove event",
+        "add": "Add event",
+        "fields": {
+          "event_name": {
+            "title": "Event name",
+            "required": "Event name is required",
+            "minlength": "Name must be at least 3 characters"
+          },
+          "label": {
+            "title": "Visible label",
+            "placeholder": "Label to display",
+            "required": "Label is required",
+            "minlength": "Label must be at least 3 characters"
+          },
+          "status": {
+            "title": "Event status",
+            "active": "Active",
+            "inactive": "Inactive"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit metric event",
+        "fields": {
+          "event_name": {
+            "title": "Event name",
+            "required": "Event name is required",
+            "minlength": "Name must be at least 3 characters"
+          },
+          "label": {
+            "title": "Visible label",
+            "placeholder": "Label to display",
+            "required": "Label is required",
+            "minlength": "Label must be at least 3 characters"
+          },
+          "status": {
+            "title": "Event status",
+            "active": "Active",
+            "inactive": "Inactive"
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete event?",
+        "message": "Are you sure you want to delete this event? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "header": {
+      "list": {
+        "title": "Header",
+        "table": {
+          "name": "Name",
+          "image": "Image"
+        }
+      },
+      "edit": {
+        "title": "Edit header",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "image": {
+            "title": "Company logo",
+            "select": "Select image",
+            "recommendation": "Recommended format: ICO, maximum size 500kb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      }
+    },
+    "carousel": {
+      "list": {
+        "title": "Carousel",
+        "table": {
+          "name": "Name",
+          "description": "Description",
+          "image": "Image"
+        },
+        "errors": {
+          "min_active": "At least 2 active items must remain for the carousel."
+        }
+      },
+      "edit": {
+        "title": "Edit carousel",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Carousel image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      }
+    },
+    "news": {
+      "list": {
+        "title": "News",
+        "table": {
+          "name": "Name",
+          "description": "Description",
+          "date": "Date",
+          "status": "Status",
+          "image": "Image",
+          "order": "Order"
+        }
+      },
+      "create": {
+        "title": "Register news",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "_date": {
+            "title": "Date",
+            "required": "The date is required"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "News file",
+            "select": "Select file",
+            "recommendation": "Recommended formats: JPG, PNG, MP4, MOV. Maximum size 20Mb",
+            "info": "You can change the file by selecting a new one.",
+            "required": "• The file is required",
+            "nodata": {
+              "title": "No file selected",
+              "subtitle": "Select a file to preview"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit news",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "_date": {
+            "title": "Date",
+            "required": "The date is required"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "News file",
+            "select": "Select file",
+            "recommendation": "Recommended formats: JPG, PNG, MP4, MOV. Maximum size 20Mb",
+            "info": "You can change the file by selecting a new one.",
+            "required": "• The file is required",
+            "nodata": {
+              "title": "No file selected",
+              "subtitle": "Select a file to preview"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "company": {
+      "list": {
+        "title": "Company data",
+        "table": {
+          "name": "Name",
+          "description": "Description",
+          "date": "Date",
+          "status": "Status",
+          "image": "Image"
+        }
+      },
+      "edit": {
+        "title": "Edit company data",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Company image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      }
+    },
+    "managers": {
+      "list": {
+        "title": "Managers",
+        "table": {
+          "name": "Name",
+          "description": "Description",
+          "charge": "Charge",
+          "image": "Image"
+        }
+      },
+      "create": {
+        "title": "Register manager",
+        "no_category": "Uncategorized",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "charge": {
+            "title": "Charge",
+            "required": "Charge is required",
+            "minlength": "Charge must be at least 3 characters",
+            "maxlength": "Charge must be up to 20 characters"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Manager image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit manager",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "charge": {
+            "title": "Charge",
+            "required": "Charge is required",
+            "minlength": "Charge must be at least 3 characters",
+            "maxlength": "Charge must be up to 20 characters"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Manager image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "reviews": {
+      "list": {
+        "title": "Reviews",
+        "table": {
+          "name": "Name",
+          "description": "Description",
+          "rating": "Rating",
+          "image": "Image"
+        }
+      },
+      "create": {
+        "title": "Register review",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "rating": {
+            "title": "Rating",
+            "none": "No rating",
+            "stars": "stars"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Client logo",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit review",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category"
+          },
+          "rating": {
+            "title": "Rating",
+            "none": "No rating",
+            "stars": "stars"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "image": {
+            "title": "Client logo",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "category": {
+      "list": {
+        "title": "Categories",
+        "table": {
+          "name": "Name"
+        }
+      },
+      "create": {
+        "title": "Register category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "products": {
+      "list": {
+        "title": "Products and services",
+        "table": {
+          "name": "Name",
+          "price": "Price",
+          "description": "Description",
+          "category": "Category",
+          "image": "Image",
+          "variants": {
+            "title": "Variants",
+            "novariants": "No variants"
+          }
+        }
+      },
+      "create": {
+        "title": "Register product or service",
+        "no_categories_found": "Uncategorized",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 2 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category",
+            "duplicateTitle": "A product with this name already exists"
+          },
+          "calurl": {
+            "title": "Link to schedule appointments",
+            "required": "The name is required",
+            "minlength": "The name must be at least 2 characters",
+            "maxlength": "The name must be up to 20 characters"
+          },
+          "price": {
+            "title": "Price"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "category": {
+            "title": "Category",
+            "required": "Category is required"
+          },
+          "variants": {
+            "title": "Variants",
+            "description": {
+              "title": "Description",
+              "required": "This field is required"
+            },
+            "price": {
+              "title": "Price",
+              "required": "This field is required",
+              "optional": "Optional price"
+            },
+            "add": "Add",
+            "empty": "No variants",
+            "info": "You can add more variants using the + button",
+            "deleteVariant": "Delete"
+          },
+          "image": {
+            "title": "Product or service files",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "uploadInfo": "You can add one or more images and videos. If you want, you can add a title to each file.",
+            "mainImageInfo": "The first file in the list will be the main product image or video. Use the arrows to reorder the files.",
+            "moveUp": "Move up",
+            "moveDown": "Move down",
+            "firstImage": "First file",
+            "lastImage": "Last file",
+            "deleteImage": "Delete",
+            "titlePlaceholder": "Title",
+            "titleRequired": "Image title is required",
+            "required": "You must add at least one image or video",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit product or service",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category",
+            "duplicateTitle": "A product with this name already exists"
+          },
+          "calurl": {
+            "title": "Link to schedule appointments",
+            "required": "The name is required",
+            "minlength": "The name must be at least 2 characters",
+            "maxlength": "The name must be up to 20 characters"
+          },
+          "price": {
+            "title": "Price"
+          },
+          "description": {
+            "title": "Description",
+            "required": "Description is required",
+            "minlength": "Description must be at least 3 characters"
+          },
+          "category": {
+            "title": "Category",
+            "required": "Category is required"
+          },
+          "variants": {
+            "title": "Variants",
+            "description": {
+              "title": "Description",
+              "required": "This field is required"
+            },
+            "price": {
+              "title": "Price",
+              "required": "This field is required",
+              "optional": "Optional price"
+            },
+            "add": "Add",
+            "empty": "No variants",
+            "info": "You can add more variants using the + button",
+            "deleteVariant": "Delete "
+          },
+          "image": {
+            "title": "Product or service files",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1Mb",
+            "info": "You can change the image by selecting a new one.",
+            "uploadInfo": "You can add one or more images and videos. If you want, you can add a title to each file.",
+            "mainImageInfo": "The first file in the list will be the main product image or video. Use the arrows to reorder the files.",
+            "moveUp": "Move up",
+            "moveDown": "Move down",
+            "firstImage": "First file",
+            "lastImage": "Last file",
+            "deleteImage": "Delete",
+            "titlePlaceholder": "Title",
+            "titleRequired": "Image title is required",
+            "required": "You must add at least one image or video",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "publication-category": {
+      "list": {
+        "title": "Publication categories",
+        "table": {
+          "name": "Name"
+        }
+      },
+      "create": {
+        "title": "Register category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "manager-category": {
+      "list": {
+        "title": "Manager categories",
+        "table": {
+          "name": "Name"
+        }
+      },
+      "create": {
+        "title": "Register category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit category",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "publications": {
+      "list": {
+        "title": "Publications",
+        "table": {
+          "name": "Name",
+          "category": "Category",
+          "image": "Image"
+        }
+      },
+      "create": {
+        "title": "Register publication",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category",
+            "duplicateTitle": "A publication with this name already exists"
+          },
+          "category": {
+            "title": "Category",
+            "required": "Category is required"
+          },
+          "document": {
+            "title": "File",
+            "recommendation": "Recommended format: PDF, ZIP",
+            "select": "Select file",
+            "nodata": {
+              "title": "No file selected",
+              "subtitle": "Select a file to preview"
+            }
+          },
+          "image": {
+            "title": "Post image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1MB",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit Post",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters",
+            "uniqueName": "A manager with this name already exists in this category",
+            "duplicateTitle": "A publication with this name already exists"
+          },
+          "category": {
+            "title": "Category",
+            "required": "Category is required"
+          },
+          "document": {
+            "title": "File",
+            "recommendation": "Recommended format: PDF, ZIP",
+            "info": "You can change the file by selecting a new one.",
+            "loading": "Uploading current file...",
+            "select": "Select file",
+            "nodata": {
+              "title": "No file selected",
+              "subtitle": "Select a file to preview"
+            }
+          },
+          "image": {
+            "title": "Post image",
+            "select": "Select image",
+            "recommendation": "Recommended format: JPG, PNG. Maximum size 1MB",
+            "info": "You can change the image by selecting a new one.",
+            "required": "• The image is required",
+            "nodata": {
+              "title": "No image selected",
+              "subtitle": "Select an image to preview"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete item?",
+        "message": "Are you sure you want to delete this item? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "contact": {
+      "list": {
+        "title": "Contact",
+        "table": {
+          "email": "Email",
+          "phone": "Phone",
+          "address": "Address"
+        }
+      },
+      "edit": {
+        "title": "Edit contact",
+        "fields": {
+          "email": {
+            "title": "Email",
+            "required": "Email is required",
+            "minlength": "Email must be at least 3 characters",
+            "maxlength": "Email must be up to 20 characters",
+            "email": "The email address is not valid"
+          },
+          "socialNetworks": {
+            "title": "Social Media",
+            "network": "Social Network",
+            "copyUrl": "Copy URL",
+            "delete": "Delete",
+            "url": "Social Media Url",
+            "username": "Username",
+            "activate": "Activate",
+            "deactivate": "Deactivate",
+            "empty": "No social networks added",
+            "networkRequired": "Social network is required",
+            "urlRequired": "URL is required",
+            "usernameRequired": "Username is required",
+            "urlInvalid": "URL is not valid",
+            "addFirst": "Add",
+            "networkPlaceholder": "E.g: Facebook, Instagram, LinkedIn, etc.",
+            "urlPlaceholder": "https://example.com",
+            "usernamePlaceholderActive": "E.g: user123",
+            "usernamePlaceholderInactive": "Optional"
+          },
+          "address": {
+            "title": "Address",
+            "required": "Address is required",
+            "minlength": "Address must be at least 3 characters"
+          }
+        }
+      }
+    },
+    "users": {
+      "list": {
+        "title": "Users",
+        "table": {
+          "name": "Name",
+          "email": "Email",
+          "client": "Client",
+          "role": "Role"
+        }
+      },
+      "create": {
+        "title": "Register user",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "The name is required",
+            "minlength": "The name must be at least 3 characters",
+            "maxlength": "The name must be up to 20 characters"
+          },
+          "password": {
+            "title": "Password",
+            "required": "The field is required",
+            "minlength": "Minimum 8 characters",
+            "maxlength": "Maximum 96 characters",
+            "noLowerCase": "Must include at least one lowercase letter",
+            "noUpperCase": "Must include at least one uppercase letter",
+            "noNumber": "Must include at least one number",
+            "noSpecialChar": "Must include at least one special character ([/@$|><()[]{}_,.`~!%^*#-+=?&])"
+          },
+          "email": {
+            "title": "Email",
+            "required": "Email is required",
+            "email": "Email is not valid"
+          },
+          "client": {
+            "title": "Client",
+            "placeholder": "Select roles",
+            "required": "Role is required"
+          }
+        }
+      },
+      "edit": {
+        "title": "Edit User",
+        "fields": {
+          "name": {
+            "title": "Name",
+            "required": "Name is required",
+            "minlength": "Name must be at least 3 characters",
+            "maxlength": "Name must be up to 20 characters"
+          },
+          "email": {
+            "title": "Email",
+            "required": "Email is required",
+            "email": "Email is not valid"
+          },
+          "client": {
+            "title": "Client",
+            "placeholder": "Select roles",
+            "required": "Role is required"
+          }
+        }
+      },
+      "password": {
+        "title": "Change Password",
+        "email": "Email",
+        "fields": {
+          "new": {
+            "title": "New Password",
+            "required": "This field is required",
+            "minlength": "Minimum 8 characters",
+            "maxlength": "Maximum 96 characters",
+            "noLowerCase": "Must include at least one lowercase letter",
+            "noUpperCase": "Must include at least one uppercase letter",
+            "noNumber": "Must include at least one number",
+            "noSpecialChar": "Must include at least one special character ([/@$|><()[]{}_,.`~!%^*#-+=?&])"
+          },
+          "confirm": {
+            "title": "Confirm Password",
+            "required": "You must confirm your password",
+            "passwordMismatch": "The passwords do not match"
+          }
+        }
+      },
+      "delete": {
+        "title": "Delete element?",
+        "message": "Are you sure you want to delete this element? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    }
+  },
+  "table": {
+    "actions": "Actions",
+    "buttons": {
+      "create": "Register",
+      "edit": "Edit",
+      "changePassword": "Change password",
+      "delete": "Delete",
+      "disable": "Disable status",
+      "enable": "Enable status",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "import": "Import"
+    },
+    "search": "Search...",
+    "nodata": "No records found.",
+    "pagination": {
+      "first": "Showing",
+      "second": "to",
+      "third": "of",
+      "fourth": "records"
+    },
+    "tooltips": {
+      "refresh": "Refresh data",
+      "filter": "Filter column",
+      "sort": "Sort column"
+    }
+  },
+  "modal": {
+    "buttons": {
+      "acept": "Accept",
+      "cancel": "Cancel"
+    },
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "formInvalid": "Check the form fields."
+  },
+  "image": {
+    "loading": "Loading current image...",
+    "select": "Select image",
+    "alt": "Preview",
+    "info": "You can change the image by selecting a new one.",
+    "required": "• The image is required",
+    "delete": "Delete",
+    "sizeWarning": "The file is large ({fileSize}). Recommended size: {maxSize}. If you accept, it will upload but may take longer. Accept to continue.",
+    "nodata": {
+      "title": "No image selected",
+      "subtitle": "Select an image to preview"
+    }
+  },
+  "video": {
+    "info": "Video preview. Allowed formats: MP4, MOV",
+    "unsupported": "Unsupported video format. Try MP4 or MOV.",
+    "converting": "Converting video to a compatible format..."
+  }
+}

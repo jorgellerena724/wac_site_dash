@@ -1,0 +1,48 @@
+/* Estilos personalizados para el componente de estadísticas */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Asegurar que las gráficas se ajusten correctamente */
+::ng-deep .p-chart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+::ng-deep .p-chart canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Animaciones suaves para las tarjetas */
+.bg-white,
+.dark\\:bg-gray-800 {
+  transition: all 0.3s ease-in-out;
+}
+
+.bg-white:hover,
+.dark\\:bg-gray-800:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-cols-1.lg\\:grid-cols-2 {
+    gap: 1rem;
+  }
+
+  .h-64 {
+    height: 12rem;
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .bg-white:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+  }
+}

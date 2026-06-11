@@ -1,0 +1,1479 @@
+{
+  "notifications": {
+    "login": {
+      "success": "Autenticación Exitosa.",
+      "error": {
+        "unexpected": "Ha ocurrido un error inesperado. Inténtelo nuevamente más tarde.",
+        "badRequest": "Solicitud incorrecta. Verifica los datos enviados.",
+        "invalidCredentials": "Credenciales inválidas. Por favor, verifica tu correo y contraseña.",
+        "serverError": "Error interno del servidor. Inténtelo nuevamente más tarde.",
+        "connectionError": "No se pudo conectar con el servidor. Verifique su conexión e inténtelo más tarde.",
+        "invalidForm": "Formulario no válido. Por favor, complete todos los campos requeridos.",
+        "notfound": "No se ha encontrado un usuario con las credenciales enviadas."
+      }
+    },
+    "session": {
+      "inactivityWarning": "Tu sesión expirará pronto por inactividad.",
+      "logoutSuccess": "Sesión cerrada satisfactoriamente."
+    },
+    "header": {
+      "success": {
+        "updated": "Encabezado actualizado correctamente."
+      },
+      "error": {
+        "update": "Error al actualizar el encabezado.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "formInvalid": "Compruebe los campos del formulario."
+      }
+    },
+    "users": {
+      "success": {
+        "created": "Usuario creado satisfactoriamente.",
+        "updated": "Usuario modificado satisfactoriamente.",
+        "passwordChanged": "Contraseña actualizada satisfactoriamente.",
+        "deleted": "Usuario eliminado satisfactoriamente."
+      },
+      "error": {
+        "create": "Error al crear el usuario.",
+        "update": "Error al actualizar el usuario.",
+        "changePassword": "Error al actualizar la contraseña.",
+        "delete": "Error al eliminar el usuario.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "selfDelete": "No puede eliminar su propio usuario mientras esté autenticado.",
+        "emailExists": "El correo electrónico ya existe en el sistema."
+      }
+    },
+    "contact": {
+      "success": {
+        "updated": "Información del contacto actualizada correctamente."
+      },
+      "error": {
+        "update": "Error al actualizar el contacto.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario."
+      }
+    },
+    "carousel": {
+      "success": {
+        "updated": "Carrusel actualizado correctamente.",
+        "statusUpdated": "Estado actualizado"
+      },
+      "error": {
+        "update": "Error al actualizar el carrusel.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "statusUpdate": "Error al actualizar el estado."
+      }
+    },
+    "news": {
+      "success": {
+        "created": "Novedad registrada correctamente.",
+        "updated": "Novedad actualizada correctamente.",
+        "deleted": "Novedad eliminada satisfactoriamente.",
+        "statusUpdated": "Estado actualizado",
+        "orderUpdated": "Orden actualizado correctamente"
+      },
+      "error": {
+        "create": "Error al registrar la novedad.",
+        "update": "Error al actualizar la novedad.",
+        "delete": "Error al eliminar la novedad.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar el archivo multimedia",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "duplicateName": "Ya existe una novedad con este nombre.",
+        "statusUpdate": "Error al actualizar el estado.",
+        "orderUpdate": "Error al actualizar el orden",
+        "cannotDelete": "No se puede eliminar el producto"
+      }
+    },
+    "company": {
+      "success": {
+        "updated": "Dato de la empresa actualizado correctamente.",
+        "statusUpdated": "Estado actualizado"
+      },
+      "error": {
+        "update": "Error al actualizar.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "statusUpdate": "Error al actualizar el estado."
+      }
+    },
+    "managers": {
+      "success": {
+        "created": "Directivo registrado correctamente.",
+        "updated": "Directivo actualizado correctamente.",
+        "deleted": "Directivo eliminado satisfactoriamente."
+      },
+      "error": {
+        "create": "Error al registrar el directivo.",
+        "update": "Error al actualizar el directivo.",
+        "delete": "Error al eliminar el directivo.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor."
+      }
+    },
+    "reviews": {
+      "success": {
+        "created": "Reseña registrada correctamente.",
+        "updated": "Reseña actualizada correctamente.",
+        "deleted": "Reseña eliminada satisfactoriamente.",
+        "imported": "{{created}} reseñas importadas, {{skipped}} omitidas."
+      },
+      "error": {
+        "create": "Error al registrar la reseña.",
+        "update": "Error al actualizar la reseña.",
+        "delete": "Error al eliminar la reseña.",
+        "import": "Error al importar las reseñas.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor."
+      }
+    },
+    "statistics": {
+      "success": {
+        "created": "Métrica creado correctamente.",
+        "updated": "Métrica actualizado correctamente.",
+        "deleted": "Métrica eliminado satisfactoriamente.",
+        "activated": " Estado actualizado",
+        "deactivated": " Estado actualizado"
+      },
+      "error": {
+        "create": "Error al crear las métricas.",
+        "update": "Error al actualizar la métrica.",
+        "delete": "Error al eliminar la métrica.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "toggle": "Error al cambiar el estado del evento.",
+        "activate": "Error al activar el evento.",
+        "deactivate": "Error al desactivar el evento."
+      }
+    },
+    "manager-category": {
+      "success": {
+        "created": "Categoría registrada correctamente.",
+        "updated": "Categoría actualizada correctamente.",
+        "deleted": "Categoría eliminada satisfactoriamente."
+      },
+      "error": {
+        "create": "Error al registrar la categoría.",
+        "update": "Error al actualizar la categoría.",
+        "delete": "Error al eliminar la categoría.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateName": "Ya existe una categoría con este nombre."
+      }
+    },
+    "categories": {
+      "success": {
+        "created": "Categoría registrada correctamente.",
+        "updated": "Categoría actualizada correctamente.",
+        "deleted": "Categoría eliminada satisfactoriamente."
+      },
+      "error": {
+        "create": "Error al registrar la categoría.",
+        "update": "Error al actualizar la categoría.",
+        "delete": "Error al eliminar la categoría.",
+        "productAsociated": "No se puede eliminar la categoría porque tiene productos asociados.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateName": "Ya existe una categoría con este nombre."
+      }
+    },
+    "products": {
+      "success": {
+        "created": "Producto registrado correctamente.",
+        "updated": "Producto actualizado correctamente.",
+        "deleted": "Producto eliminado satisfactoriamente.",
+        "statusUpdated": "Estado actualizado"
+      },
+      "error": {
+        "create": "Error al registrar el producto.",
+        "update": "Error al actualizar el producto.",
+        "delete": "Error al eliminar el producto.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen del producto.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "statusUpdate": "Error al actualizar el estado.",
+        "cannotDelete": "No se puede eliminar el producto"
+      }
+    },
+    "publications": {
+      "success": {
+        "created": "Publicación registrada correctamente.",
+        "updated": "Publicación actualizada correctamente.",
+        "deleted": "Publicación eliminada satisfactoriamente.",
+        "statusUpdated": "Estado actualizado"
+      },
+      "error": {
+        "create": "Error al registrar la publicación.",
+        "update": "Error al actualizar la publicación.",
+        "delete": "Error al eliminar la publicación.",
+        "load": "Error al cargar la información.",
+        "loadImage": "Error al cargar imagen de la publicación.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateImage": "La imagen que está intentando subir ya se encuentra en el servidor.",
+        "statusUpdate": "Error al actualizar el estado.",
+        "cannotDelete": "No se puede eliminar la publicación"
+      }
+    },
+    "publication-category": {
+      "success": {
+        "created": "Categoría registrada correctamente.",
+        "updated": "Categoría actualizada correctamente.",
+        "deleted": "Categoría eliminada satisfactoriamente."
+      },
+      "error": {
+        "create": "Error al registrar la categoría.",
+        "update": "Error al actualizar la categoría.",
+        "delete": "Error al eliminar la categoría.",
+        "load": "Error al cargar la información.",
+        "formInvalid": "Compruebe los campos del formulario.",
+        "duplicateName": "Ya existe una categoría con este nombre."
+      }
+    },
+    "chatbot_config": {
+      "success": {
+        "created": "Configuración de chatbot creada exitosamente",
+        "updated": "Configuración de chatbot actualizada exitosamente",
+        "deleted": "Configuración de chatbot eliminada exitosamente"
+      },
+      "error": {
+        "formInvalid": "Por favor completa todos los campos requeridos",
+        "create": "Error al crear la configuración del chatbot",
+        "update": "Error al actualizar la configuración del chatbot",
+        "delete": "Error al eliminar la configuración del chatbot",
+        "load": "Error al cargar las configuraciones del chatbot",
+        "duplicateName": "Ya existe un modelo con este nombre."
+      }
+    },
+    "chatbot_model": {
+      "success": {
+        "created": "Configuración de chatbot creada exitosamente",
+        "updated": "Configuración de chatbot actualizada exitosamente",
+        "deleted": "Configuración de chatbot eliminada exitosamente"
+      },
+      "error": {
+        "formInvalid": "Por favor completa todos los campos requeridos",
+        "create": "Error al crear la configuración del chatbot",
+        "update": "Error al actualizar la configuración del chatbot",
+        "delete": "Error al eliminar la configuración del chatbot",
+        "load": "Error al cargar las configuraciones del chatbot",
+        "duplicateName": "Ya existe un modelo con este nombre.",
+        "cannotDelete": "No se puede eliminar el modelo, está siendo usado en una configuración."
+      }
+    },
+    "general": {
+      "copied": "Copiado al portapapeles"
+    }
+  },
+  "language": {
+    "es": "Español",
+    "en": "Inglés"
+  },
+  "status": {
+    "active": "Activado",
+    "inactive": "Desactivado"
+  },
+  "footer": {
+    "rights_reserved": "Todos los derechos reservados",
+    "whatsapp": "Contáctanos por WhatsApp",
+    "email": "Envíanos un correo",
+    "website": "Visita nuestra web"
+  },
+  "login": {
+    "email": {
+      "title": "Correo",
+      "placeholder": "Correo",
+      "required": "El correo es obligatorio.",
+      "invalid": "EL correo electrónico tiene un formato inválido."
+    },
+    "password": {
+      "title": "Contraseña",
+      "placeholder": "Contraseña",
+      "required": "La contraseña es obligatoria."
+    },
+    "loading": "Accediendo...",
+    "load": "Iniciar Sesión →"
+  },
+  "navbar": {
+    "title": "Web Empresarial Profesional",
+    "logo": "Logo",
+    "logout": "Cerrar Sesión",
+    "changepass": "Cambiar contraseña",
+    "name": "Nombre",
+    "client": "Cliente",
+    "user_menu": "Menú de usuario",
+    "save_information": "Salvar información",
+    "restore_information": "Restaurar información",
+    "backup": {
+      "generating": "Generando backup...",
+      "download_success": "Backup descargado exitosamente",
+      "download_error": "Error al descargar backup",
+      "download_error_message": "Error al descargar backup: {{message}}",
+      "restore_confirm": "¿Está seguro de que desea restaurar el backup? Esto sobreescribirá la base de datos y la carpeta uploads actuales.",
+      "restoring": "Restaurando backup...",
+      "restore_success": "Backup restaurado exitosamente. Por favor, recargue la página.",
+      "restore_error": "Error al restaurar el backup",
+      "restore_error_message": "Error al restaurar backup: {{message}}",
+      "invalid_file": "Por favor seleccione un archivo ZIP"
+    },
+    "confirm_restore": "¿Está seguro de que desea restaurar el backup?<br>Esto sobreescribirá la base de datos y la carpeta uploads actuales.",
+    "confirm_restore_title": "Confirmar Restauración",
+    "confirm_restore_button": "Restaurar",
+    "cancel_button": "Cancelar",
+    "mobile": {
+      "admin": "Administración",
+      "header": "Encabezado",
+      "home": "Inicio",
+      "carousel": "Carrusel",
+      "news": "Novedades",
+      "about": "Quiénes Somos",
+      "company": "Empresa",
+      "manager": "Directivos",
+      "review": "Reseñas",
+      "products": "Productos",
+      "category": "Categorías",
+      "publications": "Publicaciones",
+      "publications-category": "Categorías",
+      "offers": "Ofertas",
+      "contact": "Contáctenos",
+      "info": "Información",
+      "users": "Usuarios"
+    }
+  },
+  "sidebar": {
+    "admin": "Administración",
+    "header": "Encabezado",
+    "header_info": "Nombre y logo",
+    "home": "Inicio",
+    "carousel": "Carrusel",
+    "news": "Novedades",
+    "about": "Quiénes Somos",
+    "company": "Empresa",
+    "chatbot": "Chatbot",
+    "chatbot_models": "Gestionar modelos de IA",
+    "chatbot_config": "Configuración",
+    "manager": "Directivos",
+    "manager-category": "Categorías",
+    "review": "Reseñas",
+    "products": "Productos",
+    "publications": "Publicaciones",
+    "manage-publications": "Gestionar publicaciones",
+    "publications-category": "Categorías",
+    "category": "Categorías",
+    "offers": "Ofertas",
+    "contact": "Contáctenos",
+    "info": "Información",
+    "users": "Usuarios",
+    "users_manage": "Gestionar usuarios",
+    "statistics": "Estadísticas",
+    "statistics_charts": "Gráficas",
+    "statistics_config": "Configuración",
+    "expand": "Expandir",
+    "collapse": "Contraer"
+  },
+  "admin": {
+    "header": {
+      "title": "Panel de Administración",
+      "subtitle": "Personalice la apariencia de su sitio web empresarial"
+    },
+    "body": {
+      "title": "Bienvenido a su Centro de Control",
+      "subtitle": "Como administrador, tiene acceso completo para personalizar el formato y la apariencia de su página web empresarial según las necesidades específicas de su marca.",
+      "left": {
+        "first": {
+          "title": "Plantilla 100% Personalizable",
+          "text": "Modifique completamente nuestra plantilla profesional adaptándola a sus necesidades exactas. Ajuste cada elemento según su visión de marca para crear una presencia web única que destaque frente a su competencia."
+        },
+        "second": {
+          "title": "Estructura de Contenido",
+          "text": "Configure las secciones de su sitio web para destacar sus productos, servicios y valores diferenciales de manera estratégica."
+        }
+      },
+      "right": {
+        "first": {
+          "title": "Selección de Idiomas",
+          "text": "Ofrezca una experiencia multilingüe en su sitio web. Seleccione entre una variedad de idiomas para satisfacer las necesidades de su audiencia global y mejorar la accesibilidad."
+        },
+        "second": {
+          "title": "Diseño Responsivo",
+          "text": "Su sitio web se adapta automáticamente a cualquier tamaño de pantalla, garantizando una experiencia óptima en dispositivos móviles, tablets y escritorio con tecnología responsive de última generación."
+        }
+      }
+    },
+    "footer": "Cambios en tiempo real sin conocimientos técnicos"
+  },
+  "components": {
+    "chatbot_config": {
+      "list": {
+        "title": "Configuraciones de Chatbot",
+        "table": {
+          "name": "Nombre de usuario",
+          "model": "Nombre del modelo de IA",
+          "status": "Estado",
+          "tokens_remaining": "Tokens restantes",
+          "tokens_limit": "Límite de tokens"
+        },
+        "errors": {}
+      },
+      "create": {
+        "title": "Registrar Configuración de IA",
+        "fields": {
+          "user": {
+            "title": "Usuario",
+            "required": "El usuario es requerido",
+            "exists": "Este usuario ya tiene una configuración de IA"
+          },
+          "apiKey": {
+            "title": "API Key",
+            "required": "La API Key es requerida",
+            "minlength": "La API Key debe tener al menos 20 caracteres"
+          },
+          "model": {
+            "title": "Modelo de IA",
+            "required": "El modelo es requerido"
+          },
+          "prompt": {
+            "title": "Prompt del Sistema",
+            "required": "El prompt del sistema es requerido",
+            "minlength": "El prompt debe tener al menos 10 caracteres"
+          },
+          "temperature": {
+            "title": "Temperatura",
+            "required": "La temperatura es requerida",
+            "min": "La temperatura mínima es 0.1",
+            "max": "La temperatura máxima es 1.0"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar Configuración de IA"
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "chatbot_model": {
+      "list": {
+        "title": "Modelos de IA",
+        "table": {
+          "name": "Nombre del modelo",
+          "provider": "Proveedor",
+          "daily_token_limit": "Límite diario de tokens"
+        }
+      },
+      "create": {
+        "title": "Registrar Modelo de IA",
+        "fields": {
+          "name": {
+            "title": "Nombre del modelo",
+            "required": "El modelo de IA es requerido",
+            "minlength": "El nombre debe de tener al menos 3 caracteres."
+          },
+          "provider": {
+            "title": "Proveedor",
+            "required": "El nombre del proveedor es requerido"
+          },
+          "daily_token_limit": {
+            "title": "Límite diario de tokens",
+            "required": "El límite diario de tokens es requerido",
+            "min": "El límite debe ser al menos 1"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar Modelo de IA"
+      }
+    },
+    "statistics": {
+      "title": "Estadísticas",
+      "trend": "Tendencia del período",
+      "totals": "Totales del período",
+      "proportion": "Proporción de eventos",
+      "server_time": "Hora del servidor",
+      "ranges": {
+        "today": "Hoy",
+        "week": "Esta semana",
+        "month": "Este mes",
+        "custom": "Personalizado"
+      },
+      "chart_labels": {
+        "total": "Total",
+        "events": {
+          "site_visits": "Visitas al sitio",
+          "bookings_created": "Citas agendadas",
+          "bookings_cancelled": "Citas canceladas",
+          "bookings_rescheduled": "Citas reagendadas",
+          "payments_completed": "Pagos completados",
+          "payments_refunded": "Pagos reembolsados"
+        }
+      },
+      "configure": "Configurar eventos",
+      "config": {
+        "title": "Gestión de métricas",
+        "table": {
+          "client": "Cliente",
+          "event_name": "Nombre del evento",
+          "label": "Etiqueta",
+          "status": "Estado"
+        }
+      },
+      "create": {
+        "add": "Agregar evento",
+        "remove": "Eliminar evento",
+        "title": "Crear evento de métrica",
+        "fields": {
+          "event_name": {
+            "title": "Nombre del evento",
+            "required": "El nombre del evento es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "label": {
+            "title": "Etiqueta visible",
+            "placeholder": "Etiqueta para mostrar",
+            "required": "La etiqueta es requerida",
+            "minlength": "La etiqueta debe tener al menos 3 caracteres"
+          },
+          "status": {
+            "title": "Estado del evento",
+            "active": "Activo",
+            "inactive": "Inactivo"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar evento de métrica",
+        "fields": {
+          "event_name": {
+            "title": "Nombre del evento",
+            "required": "El nombre del evento es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "label": {
+            "title": "Etiqueta visible",
+            "placeholder": "Etiqueta para mostrar",
+            "required": "La etiqueta es requerida",
+            "minlength": "La etiqueta debe tener al menos 3 caracteres"
+          },
+          "status": {
+            "title": "Estado del evento",
+            "active": "Activo",
+            "inactive": "Inactivo"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar evento?",
+        "message": "¿Está seguro que desea eliminar este evento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "header": {
+      "list": {
+        "title": "Encabezado",
+        "table": {
+          "name": "Nombre",
+          "image": "Imagen"
+        }
+      },
+      "edit": {
+        "title": "Modificar encabezado",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "image": {
+            "title": "Logo de la empresa",
+            "recommendation": "Formato recomendado: ICO, tamaño máximo 500kb"
+          }
+        }
+      }
+    },
+    "carousel": {
+      "list": {
+        "title": "Carrusel",
+        "table": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "image": "Imagen"
+        },
+        "errors": {
+          "min_active": "Deben quedar al menos 2 elementos activos para el carrusel"
+        }
+      },
+      "edit": {
+        "title": "Modificar carrusel",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Imagen del carrusel",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      }
+    },
+    "news": {
+      "list": {
+        "title": "Novedades",
+        "table": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "date": "Fecha",
+          "status": "Estado",
+          "image": "Imagen",
+          "order": "Orden"
+        }
+      },
+      "create": {
+        "title": "Registrar novedad",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "_date": {
+            "title": "Fecha",
+            "required": "La fecha es requerida"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Archivo de la novedad",
+            "recommendation": "Formato recomendado: WEBP, MP4. Tamaño máximo 20Mb"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar novedad",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "_date": {
+            "title": "Fecha",
+            "required": "La fecha es requerida"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Archivo de la novedad",
+            "recommendation": "Formato recomendado: WEBP, MP4. Tamaño máximo 20Mb"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "company": {
+      "list": {
+        "title": "Datos de la empresa",
+        "table": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "date": "Fecha",
+          "status": "Estado",
+          "image": "Imagen"
+        }
+      },
+      "edit": {
+        "title": "Modificar datos de la empresa",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Imagen de la empresa",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      }
+    },
+    "managers": {
+      "list": {
+        "title": "Directivos",
+        "table": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "charge": "Cargo",
+          "image": "Imagen"
+        }
+      },
+      "create": {
+        "title": "Registrar directivo",
+        "no_category": "Sin categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "charge": {
+            "title": "Cargo",
+            "required": "El cargo es requerido",
+            "minlength": "El cargo debe tener al menos 3 caracteres",
+            "maxlength": "El cargo debe tener hasta 20 caracteres"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Imagen del directivo",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar directivo",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "charge": {
+            "title": "Cargo",
+            "required": "El cargo es requerido",
+            "minlength": "El cargo debe tener al menos 3 caracteres",
+            "maxlength": "El cargo debe tener hasta 20 caracteres"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Imagen del directivo",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "reviews": {
+      "list": {
+        "title": "Reseñas",
+        "table": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "rating": "Calificación",
+          "image": "Imagen"
+        }
+      },
+      "create": {
+        "title": "Registrar reseña",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "rating": {
+            "title": "Calificación",
+            "none": "Sin calificación",
+            "stars": "estrellas"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Logo del cliente",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar reseña",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "rating": {
+            "title": "Calificación",
+            "none": "Sin calificación",
+            "stars": "estrellas"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "image": {
+            "title": "Logo del cliente",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "category": {
+      "list": {
+        "title": "Categorías",
+        "table": {
+          "name": "Nombre"
+        }
+      },
+      "create": {
+        "title": "Registrar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "products": {
+      "list": {
+        "title": "Productos y servicios",
+        "table": {
+          "name": "Nombre",
+          "price": "Precio",
+          "description": "Descripción",
+          "category": "Categoría",
+          "image": "Imagen",
+          "variants": {
+            "title": "Variantes",
+            "novariants": "Sin variantes"
+          }
+        }
+      },
+      "create": {
+        "title": "Registrar producto o servicio",
+        "no_categories_found": "Sin categorías",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 2 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "duplicateTitle": "Ya existe un producto con este nombre"
+          },
+          "calurl": {
+            "title": "Link para agendar citas",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 2 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          },
+          "price": {
+            "title": "Precio"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "category": {
+            "title": "Categoría",
+            "required": "La categoría es requerida"
+          },
+          "variants": {
+            "title": "Variantes",
+            "description": {
+              "title": "Descripción",
+              "required": "El campo es requerido"
+            },
+            "price": {
+              "title": "Precio",
+              "required": "El campo es requerido",
+              "optional": "Precio opcional"
+            },
+            "add": "Agregar",
+            "empty": "Sin variantes",
+            "info": "Puede agregar mas variantes en el botón de +",
+            "deleteVariant": "Eliminar"
+          },
+          "image": {
+            "title": "Archivos de los productos o servicios",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "uploadInfo": "Puede agregar una o más imágenes y videos. Si lo desea, puede agregar un título a cada archivo.",
+            "mainImageInfo": "El primer archivo en el listado será la imagen o video principal del producto. Usa las flechas para reordenar los archivos.",
+            "moveUp": "Subir",
+            "moveDown": "Bajar",
+            "firstImage": "Primer archivo",
+            "lastImage": "Último archivo",
+            "deleteImage": "Eliminar",
+            "titlePlaceholder": "Título",
+            "titleRequired": "El título de la imagen es requerido",
+            "required": "Debe agregar al menos una imagen o video",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar producto o servicio",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 2 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "duplicateTitle": "Ya existe un producto con este nombre"
+          },
+          "calurl": {
+            "title": "Link para agendar citas",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 2 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          },
+          "price": {
+            "title": "Precio"
+          },
+          "description": {
+            "title": "Descripción",
+            "required": "La descripción es requerida",
+            "minlength": "El nombre debe tener al menos 3 caracteres"
+          },
+          "variants": {
+            "title": "Variantes",
+            "description": {
+              "title": "Descripción",
+              "required": "El campo es requerido"
+            },
+            "price": {
+              "title": "Precio",
+              "required": "El campo es requerido",
+              "optional": "Precio opcional"
+            },
+            "add": "Agregar",
+            "empty": "Sin variantes",
+            "info": "Puede agregar mas variantes en el botón de +",
+            "deleteVariant": "Eliminar"
+          },
+          "category": {
+            "title": "Categoría",
+            "required": "La categoría es requerida"
+          },
+          "image": {
+            "title": "Archivos de los productos o servicios",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "uploadInfo": "Puede agregar una o más imágenes y videos. Si lo desea, puede agregar un título a cada archivo.",
+            "mainImageInfo": "El primer archivo en el listado será la imagen o video principal del producto. Usa las flechas para reordenar los archivos.",
+            "moveUp": "Subir",
+            "moveDown": "Bajar",
+            "firstImage": "Primer archivo",
+            "lastImage": "Último archivo",
+            "deleteImage": "Eliminar",
+            "titlePlaceholder": "Título",
+            "titleRequired": "El título de la imagen es requerido",
+            "required": "Debe agregar al menos una imagen o video",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "publication-category": {
+      "list": {
+        "title": "Categorías de publicaciones",
+        "table": {
+          "name": "Nombre"
+        }
+      },
+      "create": {
+        "title": "Registrar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "manager-category": {
+      "list": {
+        "title": "Categorías de directivos",
+        "table": {
+          "name": "Nombre"
+        }
+      },
+      "create": {
+        "title": "Registrar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar categoría",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "publications": {
+      "list": {
+        "title": "Publicaciones",
+        "table": {
+          "name": "Nombre",
+          "category": "Categoría",
+          "image": "Imagen"
+        }
+      },
+      "create": {
+        "title": "Registrar publicación",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría",
+            "duplicateTitle": "Ya existe una publicación con este nombre"
+          },
+          "category": {
+            "title": "Categoría",
+            "required": "La categoría es requerida"
+          },
+          "document": {
+            "title": "Archivo",
+            "recommendation": "Formato recomendado: PDF, ZIP",
+            "select": "Seleccionar archivo",
+            "nodata": {
+              "title": "No hay archivo seleccionado",
+              "subtitle": "Seleccione una archivo para ver la previsualización"
+            }
+          },
+          "image": {
+            "title": "Imagen de la publicación",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar publicación",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría",
+            "duplicateTitle": "Ya existe una publicación con este nombre"
+          },
+          "category": {
+            "title": "Categoría",
+            "required": "La categoría es requerida"
+          },
+          "document": {
+            "title": "Archivo",
+            "recommendation": "Formato recomendado: PDF, ZIP",
+            "info": "Puede cambiar el archivo seleccionando por uno nuevo.",
+            "loading": "Cargando archivo actual...",
+            "select": "Seleccionar archivo",
+            "nodata": {
+              "title": "No hay archivo seleccionado",
+              "subtitle": "Seleccione una archivo para ver la previsualización"
+            }
+          },
+          "image": {
+            "title": "Imagen de la publicación",
+            "select": "Seleccionar imagen",
+            "recommendation": "Formato recomendado: WEBP. Tamaño máximo 1Mb",
+            "info": "Puede cambiar la imagen seleccionando una nueva.",
+            "required": "• La imagen es requerida",
+            "nodata": {
+              "title": "No hay imagen seleccionada",
+              "subtitle": "Seleccione una imagen para ver la previsualización"
+            }
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    },
+    "contact": {
+      "list": {
+        "title": "Contacto",
+        "table": {
+          "email": "Correo Electrónico",
+          "phone": "Teléfono",
+          "address": "Dirección"
+        }
+      },
+      "edit": {
+        "title": "Modificar contacto",
+        "fields": {
+          "email": {
+            "title": "Correo",
+            "required": "El correo es requerido",
+            "minlength": "El correo debe tener al menos 3 caracteres",
+            "maxlength": "El correo debe tener hasta 20 caracteres",
+            "email": "El correo electrónico no es válido"
+          },
+          "socialNetworks": {
+            "title": "Redes Sociales",
+            "network": "Red Social",
+            "copyUrl": "Copiar URL",
+            "delete": "Eliminar",
+            "url": "Url de la red social",
+            "username": "Nombre de usuario",
+            "activate": "Activar",
+            "deactivate": "Desactivar",
+            "empty": "No hay redes sociales agregadas",
+            "networkRequired": "La red social es requerida",
+            "urlRequired": "La URL es requerida",
+            "usernameRequired": "El nombre de usuario es requerido",
+            "urlInvalid": "La URL no es válida",
+            "addFirst": "Agregar",
+            "networkPlaceholder": "Ej: Facebook, Instagram, LinkedIn, etc.",
+            "urlPlaceholder": "https://ejemplo.com",
+            "usernamePlaceholderActive": "Ej: usuario123",
+            "usernamePlaceholderInactive": "Opcional"
+          },
+          "address": {
+            "title": "Dirección",
+            "required": "La dirección es requerida",
+            "minlength": "La dirección debe tener al menos 3 caracteres"
+          }
+        }
+      }
+    },
+    "users": {
+      "list": {
+        "title": "Usuarios",
+        "table": {
+          "name": "Nombre",
+          "email": "Correo",
+          "client": "Cliente",
+          "role": "Rol"
+        }
+      },
+      "create": {
+        "title": "Registrar usuario",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres"
+          },
+          "password": {
+            "title": "Contraseña",
+            "required": "El campo es requerido",
+            "minlength": "Mínimo 8 caracteres",
+            "maxlength": "Máximo 96 caracteres",
+            "noLowerCase": "Debe incluir al menos una letra minúscula",
+            "noUpperCase": "Debe incluir al menos una letra mayúscula",
+            "noNumber": "Debe incluir al menos un número",
+            "noSpecialChar": "Debe incluir al menos un carácter especial ([/@$|><()[]{}_,.`~!%^*#-+=?&])"
+          },
+          "email": {
+            "title": "Correo",
+            "required": "El correo es requerido",
+            "email": "El correo electrónico no es válido"
+          },
+          "client": {
+            "title": "Cliente",
+            "placeholder": "Selecciona los roles",
+            "required": "El rol es requerido"
+          }
+        }
+      },
+      "edit": {
+        "title": "Modificar Usuario",
+        "fields": {
+          "name": {
+            "title": "Nombre",
+            "required": "El nombre es requerido",
+            "minlength": "El nombre debe tener al menos 3 caracteres",
+            "maxlength": "El nombre debe tener hasta 20 caracteres",
+            "uniqueName": "Ya existe un directivo con este nombre en esta categoría"
+          },
+          "email": {
+            "title": "Correo",
+            "required": "El correo es requerido",
+            "email": "El correo electrónico no es válido"
+          },
+          "client": {
+            "title": "Cliente",
+            "placeholder": "Selecciona los roles",
+            "required": "El rol es requerido"
+          }
+        }
+      },
+      "password": {
+        "title": "Cambiar Contraseña",
+        "email": "Correo",
+        "fields": {
+          "new": {
+            "title": "Nueva Contraseña",
+            "required": "El campo es requerido",
+            "minlength": "Mínimo 8 caracteres",
+            "maxlength": "Máximo 96 caracteres",
+            "noLowerCase": "Debe incluir al menos una letra minúscula",
+            "noUpperCase": "Debe incluir al menos una letra mayúscula",
+            "noNumber": "Debe incluir al menos un número",
+            "noSpecialChar": "Debe incluir al menos un carácter especial ([/@$|><()[]{}_,.`~!%^*#-+=?&])"
+          },
+          "confirm": {
+            "title": "Confirmar Contraseña",
+            "required": "Es necesario confirmar la contraseña",
+            "passwordMismatch": "Las contraseñas no coinciden"
+          }
+        }
+      },
+      "delete": {
+        "title": "¿Eliminar elemento?",
+        "message": "¿Está seguro que desea eliminar este elemento? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar",
+        "cancel": "Cancelar"
+      }
+    }
+  },
+  "table": {
+    "actions": "Acciones",
+    "buttons": {
+      "create": "Registrar",
+      "edit": "Editar",
+      "changePassword": "Cambiar contraseña",
+      "delete": "Eliminar",
+      "disable": "Desactivar estado",
+      "enable": "Activar estado",
+      "moveUp": "Subir",
+      "moveDown": "Bajar",
+      "import": "Importar"
+    },
+    "search": "Buscar...",
+    "nodata": "No se encontraron registros.",
+    "pagination": {
+      "first": "Mostrando",
+      "second": "a",
+      "third": "de",
+      "fourth": "registros"
+    },
+    "tooltips": {
+      "refresh": "Refrescar datos",
+      "filter": "Filtrar columna",
+      "sort": "Ordenar columna"
+    }
+  },
+  "modal": {
+    "buttons": {
+      "acept": "Aceptar",
+      "cancel": "Cancelar"
+    },
+    "expand": "Expandir",
+    "collapse": "Contraer",
+    "formInvalid": "Compruebe los campos del formulario."
+  },
+  "image": {
+    "loading": "Cargando archivo actual...",
+    "select": "Seleccionar archivo",
+    "alt": "Previsualización",
+    "info": "Puede cambiar el archivo seleccionando por uno nuevo.",
+    "required": "• El archivo es requerido",
+    "delete": "Eliminar",
+    "sizeWarning": "El archivo es grande ({fileSize}). Tamaño recomendado: {maxSize}. Si acepta, se subirá pero puede tardar más tiempo. Aceptar para continuar.",
+    "nodata": {
+      "title": "No hay archivo seleccionado",
+      "subtitle": "Seleccione un archivo para ver la previsualización"
+    }
+  },
+  "video": {
+    "info": "Vista previa del video. Formatos permitidos: MP4, MOV",
+    "unsupported": "Formato de video no compatible. Intente con MP4 o MOV.",
+    "converting": "Convirtiendo video a formato compatible..."
+  }
+}

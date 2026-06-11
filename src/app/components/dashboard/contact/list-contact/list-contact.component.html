@@ -1,0 +1,27 @@
+<!-- list-contact.component.html -->
+<div
+  class="h-full items-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-lg"
+>
+  <div
+    class="bg-[rgb(232,232,232)] dark:bg-[rgb(15,14,14)] dark:border-gray-200 rounded-lg p-3 sm:p-4 md:p-6 border-2 border-gray-600 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+  >
+    <h1
+      class="text-xl sm:text-2xl font-bold text-gray-700 dark:text-gray-300 mb-3 sm:mb-4"
+    >
+      {{ "components.contact.list.title" | transloco }}
+    </h1>
+
+    <!-- La tabla con signals -->
+    <div class="mt-3 sm:mt-4">
+      <app-table
+        [data]="data()"
+        [columns]="columns()"
+        [loading]="loading()"
+        [headerActions]="headerActions()"
+        [rowActions]="rowActions()"
+        (refresh)="onRefresh()"
+      >
+      </app-table>
+    </div>
+  </div>
+</div>

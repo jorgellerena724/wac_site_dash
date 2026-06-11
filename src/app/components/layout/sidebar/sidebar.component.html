@@ -1,0 +1,61 @@
+<div class="pt-20">
+  <app-navbar id="navbar"></app-navbar>
+
+  <!-- Sidebar (Aside) -->
+  <aside
+    [ngClass]="[
+      isMobileView()
+        ? showSidebar()
+          ? 'translate-x-0'
+          : '-translate-x-full'
+        : '',
+      sidebarCollapsed() && !isMobileView()
+        ? collapsedWidth()
+        : expandedWidth(),
+    ]"
+    class="bg-gray-800 shadow-[0_0_20px_rgba(0,0,0,0.2),_0_0_40px_rgba(0,0,0,0.15),_0_0_60px_rgba(0,0,0,0.1),_0_0_80px_rgba(0,0,0,0.05)] text-gray-300 transition-all duration-300 ease-in-out h-screen fixed z-20 flex flex-col"
+  >
+    <!-- Toggle button -->
+    @if (showSidebar()) {
+      <div
+        (click)="toggleSidebar()"
+        class="absolute -right-4 top-0 bg-gray-800 rounded-full w-8 h-8 flex justify-center items-center hover:bg-gray-700 hover:text-white transition-colors duration-300 cursor-pointer border border-white"
+        [pTooltip]="
+          sidebarCollapsed() && !isMobileView()
+            ? ('sidebar.expand' | transloco)
+            : ('sidebar.collapse' | transloco)
+        "
+        tooltipPosition="right"
+      >
+        <div
+          class="transition-transform duration-300"
+          [class.rotate-180]="sidebarCollapsed() && !isMobileView()"
+        >
+          <svg [lucideIcon]="getIcon('chevron-left')" class="w-5 h-5"></svg>
+        </div>
+      </div>
+    }
+
+    <!-- Scrollable Sidebar content -->
+    <div class="flex-1 overflow-y-auto custom-scrollbar border-blue-50">
+      <div class="p-4">
+        <!-- Menu items -->
+        <nav>
+          @for (item of visibleMenuItems(); track item.label) {
+            <app-sidebar-menu-item
+              [item]="item"
+              [sidebarCollapsed]="sidebarCollapsed()"
+              [isMobileView]="isMobileView()"
+              [router]="router"
+              (closeMobileSidebar)="closeMobileSidebar()"
+            ></app-sidebar-menu-item>
+          }
+
+          <div class="border-t border-gray-800 p-4 mt-auto mb-4">
+            <h1 class="text-gray-800">WEP</h1>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </aside>
+</div>

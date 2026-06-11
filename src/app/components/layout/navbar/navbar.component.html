@@ -1,0 +1,940 @@
+<!-- navbar.component.html -->
+<nav
+  class="bg-gray-800 shadow-[0_0_20px_rgba(0,0,0,0.2),_0_0_40px_rgba(0,0,0,0.15),_0_0_60px_rgba(0,0,0,0.1),_0_0_80px_rgba(0,0,0,0.05)] fixed w-full top-0 z-30"
+>
+  <div class="w-full px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center w-full">
+      <!-- Botón del menú móvil para dashboard en pantallas pequeñas -->
+      <div class="dashboard-mobile-menu-button md:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-400 border border-gray-700 hover:bg-gray-700 focus:outline-none"
+          aria-controls="mobile-menu"
+          [attr.aria-expanded]="mobileMenuOpen()"
+        >
+          @if (!mobileMenuOpen()) {
+            <svg [lucideIcon]="getIcon('menu')" class="w-6 h-6"></svg>
+          }
+          @if (mobileMenuOpen()) {
+            <svg [lucideIcon]="getIcon('x')" class="w-6 h-6"></svg>
+          }
+        </button>
+      </div>
+
+      <!-- Logo y nombre de la empresa siempre visibles -->
+      <div class="flex items-center flex-shrink-1 overflow-hidden">
+        <img
+          [src]="imgPath + 'logo-1.ico'"
+          [alt]="'navbar.logo' | transloco"
+          class="h-12 w-auto sm:h-16 mr-2 sm:mr-4 flex-shrink-0"
+        />
+        <div class="flex flex-col min-w-0">
+          <h1 class="font-bold text-lg sm:text-xl md:text-2xl">
+            <span
+              class="bg-gradient-to-r from-white via-yellow-200 to-blue-200 text-transparent bg-clip-text truncate block"
+            >
+              {{ animatedTitle() }}<span class="animate-pulse">|</span>
+            </span>
+          </h1>
+          <div
+            class="h-1 w-full bg-gradient-to-r from-white via-yellow-200 to-blue-200 rounded mt-1"
+          ></div>
+        </div>
+      </div>
+
+      <!--  Botón Salir y Language Selector -->
+      <div class="flex items-center space-x-2 flex-shrink-0">
+        <div class="flex items-center space-x-2">
+          <!-- Language Selector with SVG Flags -->
+          <div class="relative inline-block text-left mr-2 ml-2">
+            <div>
+              <button
+                type="button"
+                (click)="toggleLanguageMenu()"
+                class="inline-flex items-center justify-center w-full rounded-lg border border-gray-500 bg-gray-700 px-3 py-2 text-sm font-semibold text-white transition-all duration-300 ease-in-out hover:bg-gray-600"
+                id="language-menu"
+                [attr.aria-expanded]="languageMenuOpen()"
+                aria-haspopup="true"
+              >
+                <div class="w-6 h-6 mr-2">
+                  @if (currentLanguageCode() === "es") {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                      <path
+                        fill="#c70318"
+                        d="M52.77,20H11.23a24,24,0,0,1,41.54,0Z"
+                      />
+                      <path fill="#c70318" d="M52.77,44a24,24,0,0,1-41.54,0Z" />
+                      <path
+                        fill="#ffc500"
+                        d="M56,32a23.73,23.73,0,0,1-3.23,12H11.23a23.91,23.91,0,0,1,0-24H52.77A23.73,23.73,0,0,1,56,32Z"
+                      />
+                    </svg>
+                  } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                      <path
+                        fill="#142359"
+                        d="M32,8V28.57H8.25a24,24,0,0,1,6.6-13.35,22.57,22.57,0,0,1,2.59-2.29A23.89,23.89,0,0,1,32,8Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M48.79,14.86H32V8A23.94,23.94,0,0,1,48.79,14.86Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M53.68,21.71H32V14.86H48.79A23.86,23.86,0,0,1,53.68,21.71Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M55.75,28.57H32V21.71H53.68A23.43,23.43,0,0,1,55.75,28.57Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M56,32a22.8,22.8,0,0,1-.25,3.43H8.25a23.65,23.65,0,0,1,0-6.86h47.5A22.8,22.8,0,0,1,56,32Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M55.75,35.43a23.43,23.43,0,0,1-2.07,6.86H10.32a23.43,23.43,0,0,1-2.07-6.86Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M48.79,49.14a24,24,0,0,1-33.58,0Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M53.68,42.29a23.86,23.86,0,0,1-4.89,6.85H15.21a23.86,23.86,0,0,1-4.89-6.85Z"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="24.71 10.79 25.41 12.93 27.66 12.93 25.84 14.25 26.54 16.39 24.71 15.07 22.89 16.39 23.59 14.25 21.76 12.93 24.02 12.93 24.71 10.79"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="24.71 19.39 25.41 21.53 27.66 21.53 25.84 22.86 26.54 25 24.71 23.68 22.89 25 23.59 22.86 21.76 21.53 24.02 21.53 24.71 19.39"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="16.29 19.39 16.98 21.53 19.24 21.53 17.41 22.86 18.11 25 16.29 23.68 14.46 25 15.16 22.86 13.34 21.53 15.59 21.53 16.29 19.39"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M17.41,14.25l.7,2.14-1.82-1.32-1.82,1.32.38-1.17a22.57,22.57,0,0,1,2.59-2.29h1.8Z"
+                      />
+                    </svg>
+                  }
+                </div>
+                <div
+                  class="transition-transform duration-200"
+                  [class.rotate-180]="languageMenuOpen()"
+                >
+                  <svg
+                    [lucideIcon]="getIcon('chevron-down')"
+                    class="w-4 h-4"
+                  ></svg>
+                </div>
+              </button>
+            </div>
+
+            @if (languageMenuOpen()) {
+              <div
+                class="origin-top-right absolute right-0 mt-2 w-56 rounded-xl shadow-2xl bg-gray-800 ring-1 ring-gray-700 focus:outline-none border border-gray-700 z-50"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="language-menu"
+              >
+                <div class="py-2" role="none">
+                  <button
+                    (click)="selectLanguage('es')"
+                    class="flex items-center w-full text-left px-4 py-3 text-sm font-medium text-gray-200 hover:bg-gray-700 hover:text-white transition-colors duration-200"
+                    role="menuitem"
+                  >
+                    <div class="mr-3 w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                      >
+                        <path
+                          fill="#c70318"
+                          d="M52.77,20H11.23a24,24,0,0,1,41.54,0Z"
+                        />
+                        <path
+                          fill="#c70318"
+                          d="M52.77,44a24,24,0,0,1-41.54,0Z"
+                        />
+                        <path
+                          fill="#ffc500"
+                          d="M56,32a23.73,23.73,0,0,1-3.23,12H11.23a23.91,23.91,0,0,1,0-24H52.77A23.73,23.73,0,0,1,56,32Z"
+                        />
+                      </svg>
+                    </div>
+                    {{ "language.es" | transloco }}
+                  </button>
+
+                  <button
+                    (click)="selectLanguage('en')"
+                    class="flex items-center w-full text-left px-4 py-3 text-sm font-medium text-gray-200 hover:bg-gray-700 hover:text-white transition-colors duration-200"
+                    role="menuitem"
+                  >
+                    <div class="mr-3 w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                      >
+                        <path
+                          fill="#142359"
+                          d="M32,8V28.57H8.25a24,24,0,0,1,6.6-13.35,22.57,22.57,0,0,1,2.59-2.29A23.89,23.89,0,0,1,32,8Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M48.79,14.86H32V8A23.94,23.94,0,0,1,48.79,14.86Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M53.68,21.71H32V14.86H48.79A23.86,23.86,0,0,1,53.68,21.71Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M55.75,28.57H32V21.71H53.68A23.43,23.43,0,0,1,55.75,28.57Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M56,32a22.8,22.8,0,0,1-.25,3.43H8.25a23.65,23.65,0,0,1,0-6.86h47.5A22.8,22.8,0,0,1,56,32Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M55.75,35.43a23.43,23.43,0,0,1-2.07,6.86H10.32a23.43,23.43,0,0,1-2.07-6.86Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M48.79,49.14a24,24,0,0,1-33.58,0Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M53.68,42.29a23.86,23.86,0,0,1-4.89,6.85H15.21a23.86,23.86,0,0,1-4.89-6.85Z"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="24.71 10.79 25.41 12.93 27.66 12.93 25.84 14.25 26.54 16.39 24.71 15.07 22.89 16.39 23.59 14.25 21.76 12.93 24.02 12.93 24.71 10.79"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="24.71 19.39 25.41 21.53 27.66 21.53 25.84 22.86 26.54 25 24.71 23.68 22.89 25 23.59 22.86 21.76 21.53 24.02 21.53 24.71 19.39"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="16.29 19.39 16.98 21.53 19.24 21.53 17.41 22.86 18.11 25 16.29 23.68 14.46 25 15.16 22.86 13.34 21.53 15.59 21.53 16.29 19.39"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M17.41,14.25l.7,2.14-1.82-1.32-1.82,1.32.38-1.17a22.57,22.57,0,0,1,2.59-2.29h1.8Z"
+                        />
+                      </svg>
+                    </div>
+                    {{ "language.en" | transloco }}
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Botón Account Info con icono rotativo -->
+          <div class="relative inline-block text-left mr-2 ml-2">
+            <div>
+              <button
+                type="button"
+                (click)="toggleUserMenu()"
+                class="inline-flex items-center justify-center w-full rounded-lg px-2 py-1 text-sm font-semibold text-white hover:text-gray-400 transition-all duration-300 ease-in-out"
+                id="user-menu"
+                [attr.aria-expanded]="userMenuOpen()"
+                aria-haspopup="true"
+                pTooltip="{{ 'navbar.user_menu' | transloco }}"
+                tooltipPosition="bottom"
+              >
+                <!-- Icono principal de usuario -->
+                <svg [lucideIcon]="getIcon('user')" class="w-7 h-7"></svg>
+
+                <!-- Flecha que rota igual que en el selector de idioma -->
+                <div
+                  class="transition-transform duration-200"
+                  [class.rotate-180]="userMenuOpen()"
+                >
+                  <svg
+                    [lucideIcon]="getIcon('chevron-down')"
+                    class="w-4 h-4"
+                  ></svg>
+                </div>
+              </button>
+            </div>
+
+            <div
+              class="origin-top-right absolute right-0 mt-2 min-w-max w-auto rounded-xl shadow-2xl bg-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none transform transition-all duration-200 ease-out border border-gray-800"
+              [class.hidden]="!userMenuOpen()"
+              [class.opacity-0]="!userMenuOpen()"
+              [class.scale-95]="!userMenuOpen()"
+              [class.opacity-100]="userMenuOpen()"
+              [class.scale-100]="userMenuOpen()"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu"
+            >
+              <div class="py-2" role="none">
+                <!-- Información del usuario existente -->
+                <div
+                  class="px-4 py-3 text-sm font-medium text-gray-800 whitespace-nowrap border-b border-gray-300"
+                  role="menuitem"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-semibold mr-2"
+                      >{{ "navbar.name" | transloco }}:</span
+                    >
+                    <span>{{ userData()?.full_name }}</span>
+                  </div>
+                  <div class="flex items-center justify-between mt-1">
+                    <span class="font-semibold mr-2"
+                      >{{
+                        "components.users.password.email" | transloco
+                      }}:</span
+                    >
+                    <span>{{ userData()?.email }}</span>
+                  </div>
+                  <div class="flex items-center justify-between mt-1">
+                    <span class="font-semibold mr-2"
+                      >{{ "navbar.client" | transloco }}:</span
+                    >
+                    <span>{{ getUserClient() }}</span>
+                  </div>
+                </div>
+
+                <!-- OPCIÓN: Salvar información -->
+                <a
+                  (click)="saveInformation()"
+                  class="flex items-center cursor-pointer px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-300 hover:text-gray-800 transition-colors duration-200 border-b border-gray-300"
+                  role="menuitem"
+                >
+                  <svg [lucideIcon]="getIcon('save')" class="w-5 h-5"></svg>
+                  <span class="ml-2">{{
+                    "navbar.save_information" | transloco
+                  }}</span>
+                </a>
+
+                <!-- OPCIÓN: Restaurar información -->
+                @if (showBackupButtons()) {
+                  <a
+                    (click)="restoreInformation()"
+                    class="flex items-center cursor-pointer px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-300 hover:text-gray-800 transition-colors duration-200 border-b border-gray-300"
+                    role="menuitem"
+                  >
+                    <svg
+                      [lucideIcon]="getIcon('database-backup')"
+                      class="w-5 h-5"
+                    ></svg>
+                    <span class="ml-2">{{
+                      "navbar.restore_information" | transloco
+                    }}</span>
+                  </a>
+                }
+
+                <!-- OPCIÓN: para el cambio de contraseña-->
+                <a
+                  (click)="changePassword()"
+                  class="flex items-center cursor-pointer px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-300 hover:text-gray-800 transition-colors duration-200 border-b border-gray-300"
+                  role="menuitem"
+                >
+                  <svg [lucideIcon]="getIcon('key')" class="w-5 h-5 mr-2"></svg>
+                  {{ "navbar.changepass" | transloco }}
+                </a>
+
+                <!-- OPCIÓN: Salir -->
+                <a
+                  (click)="logout()"
+                  class="flex items-center cursor-pointer px-4 py-3 text-sm font-medium text-gray-800 hover:bg-gray-300 hover:text-gray-800 transition-colors duration-200"
+                  role="menuitem"
+                >
+                  <div class="text-red-600">
+                    <svg
+                      [lucideIcon]="getIcon('arrow-left-from-line')"
+                      class="w-5 h-5"
+                    ></svg>
+                  </div>
+                  <span class="ml-2">{{ "navbar.logout" | transloco }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Overlay para cerrar el sidebar -->
+@if (mobileMenuOpen()) {
+  <div
+    class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+    (click)="toggleMobileMenu()"
+  ></div>
+}
+
+<div
+  class="fixed top-0 left-0 h-full w-80 bg-gray-800 text-gray-300 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 md:hidden flex flex-col"
+  [class.translate-x-0]="mobileMenuOpen()"
+  [class.-translate-x-full]="!mobileMenuOpen()"
+  id="mobile-sidebar"
+>
+  <!-- Header del sidebar -->
+  <div class="flex items-center justify-between p-4 border-b border-gray-700">
+    <div class="flex items-center">
+      <img
+        [src]="imgPath + 'logo-1.ico'"
+        [alt]="'navbar.logo' | transloco"
+        class="h-14 w-auto mr-2"
+        [title]="'navbar.logo' | transloco"
+      />
+    </div>
+
+    <!-- Botón cerrar -->
+    <button
+      (click)="toggleMobileMenu()"
+      class="text-gray-400 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors"
+    >
+      <svg [lucideIcon]="getIcon('x')" class="w-6 h-6"></svg>
+    </button>
+  </div>
+
+  <!-- Contenido del sidebar con scroll -->
+  <div class="flex-1 overflow-y-auto custom-scrollbar p-4">
+    <nav>
+      <!-- Admin -->
+      <div class="mb-4">
+        <a
+          [routerLink]="['/admin']"
+          routerLinkActive="bg-gray-700 text-white"
+          (click)="onNavItemClick(null)"
+          class="border border-gray-600 flex items-center p-2 rounded-lg hover:bg-gray-700 hover:text-white w-full"
+        >
+          <svg [lucideIcon]="getIcon('settings')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap">{{
+            "sidebar.admin" | transloco
+          }}</span>
+        </a>
+      </div>
+
+      <!-- Estadísticas con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleStatisticsSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isStatisticsSubmenuOpen() || isStatisticsRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('bar-chart')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.statistics" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isStatisticsSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isStatisticsSubmenuOpen(),
+            'max-h-96 opacity-100': isStatisticsSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/statistics']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('statistics')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('line-chart')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{
+                "sidebar.statistics_charts" | transloco
+              }}</span>
+            </a>
+            @if (showUsersMenu()) {
+              <a
+                [routerLink]="['/statistics-config']"
+                routerLinkActive="bg-gray-600 text-white"
+                (click)="onNavItemClick('statistics')"
+                class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+              >
+                <svg [lucideIcon]="getIcon('settings')" class="w-4 h-4"></svg>
+                <span class="ml-2">{{
+                  "sidebar.statistics_config" | transloco
+                }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN MODIFICADA: Encabezado con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleHeaderSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isHeaderSubmenuOpen() || isHeaderRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('grip-horizontal')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.header" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isHeaderSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isHeaderSubmenuOpen(),
+            'max-h-96 opacity-100': isHeaderSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/header']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('header')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('pencil-ruler')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.header_info" | transloco }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inicio con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleHomeSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isHomeSubmenuOpen() || isHomeRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('home')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.home" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isHomeSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isHomeSubmenuOpen(),
+            'max-h-96 opacity-100': isHomeSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/carousel']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('home')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('images')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.carousel" | transloco }}</span>
+            </a>
+            <a
+              [routerLink]="['/news']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('home')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('newspaper')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.news" | transloco }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiénes Somos con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleAboutSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isAboutSubmenuOpen() || isAboutRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('warehouse')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.about" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isAboutSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isAboutSubmenuOpen(),
+            'max-h-96 opacity-100': isAboutSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/company']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('about')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('building')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.company" | transloco }}</span>
+            </a>
+
+            <a
+              [routerLink]="['/manager-category']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('about')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('list')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{
+                "sidebar.manager-category" | transloco
+              }}</span>
+            </a>
+
+            <a
+              [routerLink]="['/managers']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('about')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('user-star')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.manager" | transloco }}</span>
+            </a>
+
+            <a
+              [routerLink]="['/reviews']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('about')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('pen-square')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.review" | transloco }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Productos con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleProductsSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isProductsSubmenuOpen() || isProductsRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('shopping-cart')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.products" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isProductsSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isProductsSubmenuOpen(),
+            'max-h-96 opacity-100': isProductsSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/categories']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('products')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('list')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.category" | transloco }}</span>
+            </a>
+
+            <a
+              [routerLink]="['/products']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('products')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg
+                [lucideIcon]="getIcon('shopping-basket')"
+                class="w-4 h-4"
+              ></svg>
+              <span class="ml-2">{{ "sidebar.offers" | transloco }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Publicaciones con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="togglePublicationsSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isPublicationsSubmenuOpen() || isPublicationsRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('book-open-text')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.publications" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isPublicationsSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isPublicationsSubmenuOpen(),
+            'max-h-96 opacity-100': isPublicationsSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/publication-category']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('publications')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('list')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{
+                "sidebar.publications-category" | transloco
+              }}</span>
+            </a>
+            <a
+              [routerLink]="['/publications']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('publications')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg
+                [lucideIcon]="getIcon('book-open-check')"
+                class="w-4 h-4"
+              ></svg>
+              <span class="ml-2">{{
+                "sidebar.manage-publications" | transloco
+              }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contáctenos con Submenu -->
+      <div class="mb-2">
+        <div
+          (click)="toggleContactSubmenu()"
+          class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+          [ngClass]="{
+            'bg-gray-700 text-white':
+              isContactSubmenuOpen() || isContactRouteActive(),
+          }"
+        >
+          <svg [lucideIcon]="getIcon('headset')" class="w-5 h-5"></svg>
+          <span class="ml-2 whitespace-nowrap flex-1">{{
+            "sidebar.contact" | transloco
+          }}</span>
+          <div
+            class="transition-transform duration-300"
+            [class.rotate-180]="isContactSubmenuOpen()"
+          >
+            <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+          </div>
+        </div>
+        <div
+          class="overflow-hidden transition-all duration-300 ease-in-out"
+          [ngClass]="{
+            'max-h-0 opacity-0': !isContactSubmenuOpen(),
+            'max-h-96 opacity-100': isContactSubmenuOpen(),
+          }"
+        >
+          <div class="ml-6 mt-1">
+            <a
+              [routerLink]="['/contact']"
+              routerLinkActive="bg-gray-600 text-white"
+              (click)="onNavItemClick('contact')"
+              class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+            >
+              <svg [lucideIcon]="getIcon('info')" class="w-4 h-4"></svg>
+              <span class="ml-2">{{ "sidebar.info" | transloco }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN MODIFICADA: Users con Submenu -->
+      @if (showUsersMenu()) {
+        <div class="mb-2">
+          <div
+            (click)="toggleUsersSubmenu()"
+            class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+            [ngClass]="{
+              'bg-gray-700 text-white':
+                isUsersSubmenuOpen() || isUsersRouteActive(),
+            }"
+          >
+            <svg [lucideIcon]="getIcon('users')" class="w-5 h-5"></svg>
+            <span class="ml-2 whitespace-nowrap flex-1">{{
+              "sidebar.users" | transloco
+            }}</span>
+            <div
+              class="transition-transform duration-300"
+              [class.rotate-180]="isUsersSubmenuOpen()"
+            >
+              <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+            </div>
+          </div>
+          <div
+            class="overflow-hidden transition-all duration-300 ease-in-out"
+            [ngClass]="{
+              'max-h-0 opacity-0': !isUsersSubmenuOpen(),
+              'max-h-96 opacity-100': isUsersSubmenuOpen(),
+            }"
+          >
+            <div class="ml-6 mt-1">
+              <a
+                [routerLink]="['/users']"
+                routerLinkActive="bg-gray-600 text-white"
+                (click)="onNavItemClick('users')"
+                class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+              >
+                <svg [lucideIcon]="getIcon('user-cog')" class="w-4 h-4"></svg>
+                <span class="ml-2">{{
+                  "sidebar.users_manage" | transloco
+                }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Chatbot con Submenu -->
+      @if (showUsersMenu()) {
+        <div class="mb-2">
+          <div
+            (click)="toggleChatbotSubmenu()"
+            class="flex items-center p-2 rounded-lg border border-gray-600 hover:bg-gray-700 hover:text-white cursor-pointer"
+            [ngClass]="{
+              'bg-gray-700 text-white':
+                isChatbotSubmenuOpen() || isChatbotRouteActive(),
+            }"
+          >
+            <svg [lucideIcon]="getIcon('bot')" class="w-5 h-5"></svg>
+            <span class="ml-2 whitespace-nowrap flex-1">{{
+              "sidebar.chatbot" | transloco
+            }}</span>
+            <div
+              class="transition-transform duration-300"
+              [class.rotate-180]="isChatbotSubmenuOpen()"
+            >
+              <svg [lucideIcon]="getIcon('chevron-down')" class="w-4 h-4"></svg>
+            </div>
+          </div>
+          <div
+            class="overflow-hidden transition-all duration-300 ease-in-out"
+            [ngClass]="{
+              'max-h-0 opacity-0': !isChatbotSubmenuOpen(),
+              'max-h-96 opacity-100': isChatbotSubmenuOpen(),
+            }"
+          >
+            <div class="ml-6 mt-1">
+              <a
+                [routerLink]="['/chatbot-models']"
+                routerLinkActive="bg-gray-600 text-white"
+                (click)="onNavItemClick('chatbot')"
+                class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+              >
+                <svg
+                  [lucideIcon]="getIcon('brain-circuit')"
+                  class="w-4 h-4"
+                ></svg>
+                <span class="ml-2">{{
+                  "sidebar.chatbot_models" | transloco
+                }}</span>
+              </a>
+              <a
+                [routerLink]="['/chatbot-config']"
+                routerLinkActive="bg-gray-600 text-white"
+                (click)="onNavItemClick('chatbot')"
+                class="border border-gray-700 flex items-center p-2 mb-1 rounded-lg hover:bg-gray-600 hover:text-white text-sm"
+              >
+                <svg [lucideIcon]="getIcon('settings')" class="w-4 h-4"></svg>
+                <span class="ml-2">{{
+                  "sidebar.chatbot_config" | transloco
+                }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </nav>
+  </div>
+</div>
+
+<style>
+  .router-link-active,
+  a.bg-gray-700.text-white {
+    background-color: rgb(55 65 81) !important;
+    color: white !important;
+  }
+
+  .bg-gray-600.text-white {
+    background-color: rgb(75 85 99) !important;
+    color: white !important;
+  }
+
+  @media (max-width: 400px) {
+    h1.font-bold {
+      font-size: 0.95rem !important;
+    }
+
+    #mobile-sidebar {
+      width: 280px;
+    }
+  }
+
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+
+<!-- Componente de confirmación para restaurar backup -->
+<app-confirm-dialog #confirmDialog></app-confirm-dialog>

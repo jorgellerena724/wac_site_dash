@@ -1,0 +1,318 @@
+<div class="h-screen flex items-center justify-center relative">
+  <div
+    class="absolute inset-0 bg-center bg-no-repeat bg-cover bg-slate-200"
+    [style.background-image]="'url(' + imgPath + 'background_login.jpg)'"
+    style="background-position: 25% center"
+  ></div>
+
+  <div class="relative w-full max-w-sm px-4">
+    <div
+      class="border border-gray-500 px-8 py-10 text-left bg-gray-900 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.2),0_0_40px_rgba(0,0,0,0.15),0_0_60px_rgba(0,0,0,0.1),0_0_80px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+    >
+      <div class="flex flex-col justify-center items-center h-full select-none">
+        <!-- Selector de Idioma -->
+        <div class="w-full flex justify-end mb-4 relative z-50">
+          <div class="relative inline-block text-left">
+            <div>
+              <button
+                type="button"
+                (click)="toggleLanguageMenu()"
+                class="inline-flex items-center justify-center w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-700 transition-all duration-300 ease-in-out"
+                id="language-menu-login"
+                [attr.aria-expanded]="languageMenuOpen()"
+                aria-haspopup="true"
+              >
+                <!-- SVG de la bandera según idioma actual -->
+                <div class="w-6 h-6 mr-2">
+                  @if (currentLanguageCode() === "es") {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                      <path
+                        fill="#c70318"
+                        d="M52.77,20H11.23a24,24,0,0,1,41.54,0Z"
+                      />
+                      <path fill="#c70318" d="M52.77,44a24,24,0,0,1-41.54,0Z" />
+                      <path
+                        fill="#ffc500"
+                        d="M56,32a23.73,23.73,0,0,1-3.23,12H11.23a23.91,23.91,0,0,1,0-24H52.77A23.73,23.73,0,0,1,56,32Z"
+                      />
+                    </svg>
+                  } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                      <path
+                        fill="#142359"
+                        d="M32,8V28.57H8.25a24,24,0,0,1,6.6-13.35,22.57,22.57,0,0,1,2.59-2.29A23.89,23.89,0,0,1,32,8Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M48.79,14.86H32V8A23.94,23.94,0,0,1,48.79,14.86Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M53.68,21.71H32V14.86H48.79A23.86,23.86,0,0,1,53.68,21.71Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M55.75,28.57H32V21.71H53.68A23.43,23.43,0,0,1,55.75,28.57Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M56,32a22.8,22.8,0,0,1-.25,3.43H8.25a23.65,23.65,0,0,1,0-6.86h47.5A22.8,22.8,0,0,1,56,32Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M55.75,35.43a23.43,23.43,0,0,1-2.07,6.86H10.32a23.43,23.43,0,0,1-2.07-6.86Z"
+                      />
+                      <path
+                        fill="#bf2121"
+                        d="M48.79,49.14a24,24,0,0,1-33.58,0Z"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M53.68,42.29a23.86,23.86,0,0,1-4.89,6.85H15.21a23.86,23.86,0,0,1-4.89-6.85Z"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="24.71 10.79 25.41 12.93 27.66 12.93 25.84 14.25 26.54 16.39 24.71 15.07 22.89 16.39 23.59 14.25 21.76 12.93 24.02 12.93 24.71 10.79"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="24.71 19.39 25.41 21.53 27.66 21.53 25.84 22.86 26.54 25 24.71 23.68 22.89 25 23.59 22.86 21.76 21.53 24.02 21.53 24.71 19.39"
+                      />
+                      <polygon
+                        fill="#fff"
+                        points="16.29 19.39 16.98 21.53 19.24 21.53 17.41 22.86 18.11 25 16.29 23.68 14.46 25 15.16 22.86 13.34 21.53 15.59 21.53 16.29 19.39"
+                      />
+                      <path
+                        fill="#fff"
+                        d="M17.41,14.25l.7,2.14-1.82-1.32-1.82,1.32.38-1.17a22.57,22.57,0,0,1,2.59-2.29h1.8Z"
+                      />
+                    </svg>
+                  }
+                </div>
+                <div
+                  class="transition-transform duration-200"
+                  [class.rotate-180]="languageMenuOpen()"
+                >
+                  <svg
+                    [lucideIcon]="getIcon('chevron-down')"
+                    class="w-4 h-4"
+                  ></svg>
+                </div>
+              </button>
+            </div>
+
+            @if (languageMenuOpen()) {
+              <div
+                class="origin-top-right absolute right-0 mt-2 w-56 rounded-xl shadow-2xl bg-gray-800 ring-1 ring-gray-700 focus:outline-none border border-gray-700 z-50"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="language-menu-login"
+              >
+                <div class="py-2" role="none">
+                  <button
+                    (click)="selectLanguage('es')"
+                    class="flex items-center w-full text-left px-4 py-3 text-sm font-medium text-gray-200 hover:bg-gray-700 hover:text-white transition-colors duration-200"
+                    role="menuitem"
+                  >
+                    <div class="mr-3 w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                      >
+                        <path
+                          fill="#c70318"
+                          d="M52.77,20H11.23a24,24,0,0,1,41.54,0Z"
+                        />
+                        <path
+                          fill="#c70318"
+                          d="M52.77,44a24,24,0,0,1-41.54,0Z"
+                        />
+                        <path
+                          fill="#ffc500"
+                          d="M56,32a23.73,23.73,0,0,1-3.23,12H11.23a23.91,23.91,0,0,1,0-24H52.77A23.73,23.73,0,0,1,56,32Z"
+                        />
+                      </svg>
+                    </div>
+                    {{ "language.es" | transloco }}
+                  </button>
+
+                  <button
+                    (click)="selectLanguage('en')"
+                    class="flex items-center w-full text-left px-4 py-3 text-sm font-medium text-gray-200 hover:bg-gray-700 hover:text-white transition-colors duration-200"
+                    role="menuitem"
+                  >
+                    <div class="mr-3 w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                      >
+                        <path
+                          fill="#142359"
+                          d="M32,8V28.57H8.25a24,24,0,0,1,6.6-13.35,22.57,22.57,0,0,1,2.59-2.29A23.89,23.89,0,0,1,32,8Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M48.79,14.86H32V8A23.94,23.94,0,0,1,48.79,14.86Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M53.68,21.71H32V14.86H48.79A23.86,23.86,0,0,1,53.68,21.71Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M55.75,28.57H32V21.71H53.68A23.43,23.43,0,0,1,55.75,28.57Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M56,32a22.8,22.8,0,0,1-.25,3.43H8.25a23.65,23.65,0,0,1,0-6.86h47.5A22.8,22.8,0,0,1,56,32Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M55.75,35.43a23.43,23.43,0,0,1-2.07,6.86H10.32a23.43,23.43,0,0,1-2.07-6.86Z"
+                        />
+                        <path
+                          fill="#bf2121"
+                          d="M48.79,49.14a24,24,0,0,1-33.58,0Z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M53.68,42.29a23.86,23.86,0,0,1-4.89,6.85H15.21a23.86,23.86,0,0,1-4.89-6.85Z"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="24.71 10.79 25.41 12.93 27.66 12.93 25.84 14.25 26.54 16.39 24.71 15.07 22.89 16.39 23.59 14.25 21.76 12.93 24.02 12.93 24.71 10.79"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="24.71 19.39 25.41 21.53 27.66 21.53 25.84 22.86 26.54 25 24.71 23.68 22.89 25 23.59 22.86 21.76 21.53 24.02 21.53 24.71 19.39"
+                        />
+                        <polygon
+                          fill="#fff"
+                          points="16.29 19.39 16.98 21.53 19.24 21.53 17.41 22.86 18.11 25 16.29 23.68 14.46 25 15.16 22.86 13.34 21.53 15.59 21.53 16.29 19.39"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M17.41,14.25l.7,2.14-1.82-1.32-1.82,1.32.38-1.17a22.57,22.57,0,0,1,2.59-2.29h1.8Z"
+                        />
+                      </svg>
+                    </div>
+                    {{ "language.en" | transloco }}
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+        <!-- FIN: Selector de Idioma -->
+
+        <div
+          class="flex flex-col items-center justify-center gap-2 mb-2 relative z-10"
+        >
+          <div>
+            <img
+              [src]="imgPath + 'logo-1.ico'"
+              alt="Logo"
+              class="h-20 w-22 transition-transform duration-300 ease-in-out hover:scale-110"
+              title="Logo"
+            />
+          </div>
+        </div>
+
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+          class="space-y-6 w-full relative z-10"
+        >
+          <div class="w-full flex flex-col gap-2">
+            <label class="font-semibold text-md text-gray-400">{{
+              "login.email.title" | transloco
+            }}</label>
+            <input
+              id="email"
+              formControlName="email"
+              placeholder="{{ 'login.email.placeholder' | transloco }}"
+              class="border rounded-lg px-4 py-2 text-sm w-full outline-none border-gray-500 bg-gray-900 text-white placeholder-gray-500"
+            />
+
+            @if (
+              loginForm.get("email")?.touched &&
+              loginForm.get("email")?.hasError("required")
+            ) {
+              <div class="text-red-600 text-sm">
+                {{ "login.email.required" | transloco }}
+              </div>
+            }
+            @if (
+              loginForm.get("email")?.touched &&
+              loginForm.get("email")?.hasError("email")
+            ) {
+              <div class="text-red-600 text-sm">
+                {{ "login.email.invalid" | transloco }}
+              </div>
+            }
+          </div>
+          <div class="w-full flex flex-col gap-2 mt-4">
+            <label class="font-semibold text-md text-gray-400">{{
+              "login.password.title" | transloco
+            }}</label>
+            <div class="relative">
+              <input
+                id="password"
+                formControlName="password"
+                [type]="showPassword() ? 'text' : 'password'"
+                placeholder="{{ 'login.password.placeholder' | transloco }}"
+                class="border rounded-lg px-4 py-2 text-sm w-full outline-none border-gray-500 bg-gray-900 text-white placeholder-gray-500"
+              />
+              @if (loginForm.get("password")?.value) {
+                <button
+                  type="button"
+                  (click)="togglePasswordVisibility()"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-400 border-none outline-none focus:outline-none transition-colors duration-200"
+                  style="background: none"
+                  aria-label="Toggle password visibility"
+                >
+                  @if (!showPassword()) {
+                    <svg [lucideIcon]="getIcon('eye')" class="w-5 h-5"></svg>
+                  } @else {
+                    <svg
+                      [lucideIcon]="getIcon('eye-off')"
+                      class="w-5 h-5"
+                    ></svg>
+                  }
+                </button>
+              }
+            </div>
+            @if (
+              loginForm.get("password")?.touched &&
+              loginForm.get("password")?.hasError("required")
+            ) {
+              <div class="text-red-600 text-sm">
+                {{ "login.password.required" | transloco }}
+              </div>
+            }
+          </div>
+
+          <div class="mt-4 w-full">
+            <button
+              type="submit"
+              class="w-full h-[1cm] px-2 rounded-lg bg-gray-700 text-white font-semibold hover:bg-gray-600 transition duration-200 backdrop-blur-sm flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="isLoading()"
+            >
+              @if (isLoading()) {
+                <div class="animate-spin">
+                  <svg
+                    [lucideIcon]="getIcon('loader-circle')"
+                    class="w-5 h-5"
+                  ></svg>
+                </div>
+                <span class="ml-2">{{ "login.loading" | transloco }}</span>
+              } @else {
+                {{ "login.load" | transloco }}
+              }
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="h-full shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-lg">
+  <div
+    class="bg-[rgb(232,232,232)] dark:bg-[rgb(15,14,14)] rounded-lg p-3 sm:p-4 md:p-6 border-2 border-gray-600 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+  >
+    <!-- Header -->
+    <div class="mb-4 sm:mb-6">
+      <!-- Título solo -->
+      <div class="mb-3 sm:mb-4">
+        <h1
+          class="text-xl sm:text-2xl font-bold text-gray-700 dark:text-gray-300"
+        >
+          {{ "components.statistics.title" | transloco }}
+        </h1>
+      </div>
+
+      <!-- Server time y botones de rango -->
+      <div
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4"
+      >
+        @if (serverTime()) {
+          <div
+            class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-600 dark:border-black w-fit text-xs sm:text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg [lucideIcon]="getIcon('clock')" class="w-4 h-4"></svg>
+            <span>
+              {{ "components.statistics.server_time" | transloco }}:
+              <span
+                class="font-mono font-medium text-gray-700 dark:text-gray-300"
+              >
+                {{ serverTime()!.server_time }}
+              </span>
+              ({{ serverTime()!.timezone }})
+            </span>
+          </div>
+        }
+
+        <div class="flex flex-wrap items-center gap-2">
+          @for (range of ranges; track range) {
+            <button
+              (click)="onRangeChange(range)"
+              [class.bg-gray-800]="selectedRange() === range"
+              [class.text-white]="selectedRange() === range"
+              [class.bg-white]="selectedRange() !== range"
+              [class.text-gray-700]="selectedRange() !== range"
+              class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border border-gray-600 dark:border-black transition-colors"
+            >
+              {{ "components.statistics.ranges." + range | transloco }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom range inputs -->
+    @if (selectedRange() === "custom") {
+      <div class="flex flex-wrap gap-3 mb-4">
+        <input
+          type="date"
+          [value]="customStart()"
+          (change)="
+            customStart.set(getInputValue($event)); onCustomDateChange()
+          "
+          class="px-3 py-1.5 rounded-lg border border-gray-400 text-xs sm:text-sm bg-white dark:bg-gray-800 dark:text-white w-full sm:w-auto"
+        />
+        <input
+          type="date"
+          [value]="customEnd()"
+          (change)="customEnd.set(getInputValue($event)); onCustomDateChange()"
+          class="px-3 py-1.5 rounded-lg border border-gray-400 text-xs sm:text-sm bg-white dark:bg-gray-800 dark:text-white w-full sm:w-auto"
+        />
+      </div>
+    }
+
+    <!-- Loading -->
+    @if (loading()) {
+      <div class="flex justify-center items-center h-64">
+        <div
+          class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"
+        ></div>
+      </div>
+    }
+
+    @if (!loading()) {
+      <!-- Tarjetas -->
+      @if (summaryEntries.length > 0) {
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6"
+        >
+          @for (entry of summaryEntries; track entry.key; let i = $index) {
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-md border border-gray-300 dark:border-gray-600"
+            >
+              <div class="flex items-center gap-2 sm:gap-3">
+                <div
+                  class="p-1.5 sm:p-2 rounded-full"
+                  [style.background-color]="bgColorForIndex(i)"
+                >
+                  <div
+                    class="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
+                    [style.background-color]="colorForIndex(i)"
+                  ></div>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p
+                    class="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate"
+                  >
+                    {{ entry.label }}
+                  </p>
+                  <p
+                    class="text-base sm:text-xl font-bold text-gray-900 dark:text-white"
+                  >
+                    {{ entry.value }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Gráficas — fila 1: barras + pastel -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-md border border-gray-600 dark:border-black"
+        >
+          <h2
+            class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3 sm:mb-4"
+          >
+            {{ "components.statistics.totals" | transloco }}
+          </h2>
+          <div class="h-56 sm:h-64">
+            <p-chart
+              type="bar"
+              [data]="barChartData()"
+              [options]="barChartOptions()"
+              class="h-full"
+            />
+          </div>
+        </div>
+
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-md border border-gray-600 dark:border-black"
+        >
+          <h2
+            class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3 sm:mb-4"
+          >
+            {{ "components.statistics.proportion" | transloco }}
+          </h2>
+          <div class="h-56 sm:h-64">
+            <p-chart
+              type="pie"
+              [data]="pieChartData()"
+              [options]="pieChartOptions()"
+              class="h-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfica de tendencias — ancho completo -->
+      <div
+        class="mt-4 sm:mt-6 bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-md border border-gray-600 dark:border-black"
+      >
+        <h2
+          class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3 sm:mb-4"
+        >
+          {{ "components.statistics.trend" | transloco }}
+        </h2>
+        <div class="h-56 sm:h-64">
+          <p-chart
+            type="line"
+            [data]="lineChartData()"
+            [options]="lineChartOptions()"
+            class="h-full"
+          />
+        </div>
+      </div>
+    }
+  </div>
+</div>

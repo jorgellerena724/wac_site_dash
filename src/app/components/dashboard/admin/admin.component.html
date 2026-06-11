@@ -1,0 +1,117 @@
+<!-- admin.component.html -->
+<div class="min-h-screen bg-gray-100">
+  <div class="w-full mx-auto">
+    <!-- Tarjeta principal -->
+    <div
+      class="bg-white rounded-lg shadow-[0_0_20px_rgba(0,0,0,0.2),_0_0_40px_rgba(0,0,0,0.15),_0_0_60px_rgba(0,0,0,0.1),_0_0_80px_rgba(0,0,0,0.05)] overflow-hidden"
+    >
+      <!-- Encabezado de la tarjeta -->
+      <div class="bg-gray-800 p-6">
+        <h1 class="text-2xl font-bold text-white">
+          {{ "admin.header.title" | transloco }}
+        </h1>
+        <p class="text-blue-100 mt-2">
+          {{ "admin.header.subtitle" | transloco }}
+        </p>
+      </div>
+
+      <!-- Contenido de la tarjeta -->
+      <div class="p-6">
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">
+            {{ "admin.body.title" | transloco }}
+          </h2>
+          <p class="text-gray-600">
+            {{ "admin.body.subtitle" | transloco }}
+          </p>
+        </div>
+
+        <!-- Sección de opciones -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Opción 1 -->
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-500">
+            <div class="flex items-center mb-3">
+              <div class="p-2 bg-blue-100 rounded-md">
+                <svg
+                  lucideLayoutPanelLeft
+                  class="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                ></svg>
+              </div>
+              <h3 class="ml-3 font-medium text-gray-800">
+                {{ "admin.body.left.first.title" | transloco }}
+              </h3>
+            </div>
+            <p class="text-gray-600 text-sm">
+              {{ "admin.body.left.first.text" | transloco }}
+            </p>
+          </div>
+
+          <!-- Selección de Idiomas -->
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-500">
+            <div class="flex items-center mb-3">
+              <div class="p-2 bg-blue-100 rounded-md">
+                <svg
+                  lucideLanguages
+                  class="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                ></svg>
+              </div>
+              <h3 class="ml-3 font-medium text-gray-800">
+                {{ "admin.body.right.first.title" | transloco }}
+              </h3>
+            </div>
+            <p class="text-gray-600 text-sm">
+              {{ "admin.body.right.first.text" | transloco }}
+            </p>
+          </div>
+
+          <!-- Opción 3 -->
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-500">
+            <div class="flex items-center mb-3">
+              <div class="p-2 bg-blue-100 rounded-md">
+                <svg
+                  lucideList
+                  class="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                ></svg>
+              </div>
+              <h3 class="ml-3 font-medium text-gray-800">
+                {{ "admin.body.left.second.title" | transloco }}
+              </h3>
+            </div>
+            <p class="text-gray-600 text-sm">
+              {{ "admin.body.left.second.text" | transloco }}
+            </p>
+          </div>
+
+          <!-- Opción 4 -->
+          <div class="bg-gray-50 p-4 rounded-md border border-gray-500">
+            <div class="flex items-center mb-3">
+              <div class="p-2 bg-blue-100 rounded-md">
+                <svg
+                  lucideSmartphone
+                  class="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                ></svg>
+              </div>
+              <h3 class="ml-3 font-medium text-gray-800">
+                {{ "admin.body.right.second.title" | transloco }}
+              </h3>
+            </div>
+            <p class="text-gray-600 text-sm">
+              {{ "admin.body.right.second.text" | transloco }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Llamada a la acción -->
+        <div class="mt-8 text-center">
+          <p class="text-sm text-gray-500 mt-2">
+            {{ "admin.footer" | transloco }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

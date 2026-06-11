@@ -1,0 +1,207 @@
+<!-- update-contact.component.html -->
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4 grid grid-cols-2 gap-4">
+    <app-text-field
+      id="email"
+      label="{{ 'components.contact.edit.fields.email.title' | transloco }}"
+      [control]="getFormControl('email')"
+      [errorMessages]="{
+        required: ('components.contact.edit.fields.email.required' | transloco),
+        minlength:
+          ('components.contact.edit.fields.email.minlength' | transloco),
+        email: ('components.contact.edit.fields.email.email' | transloco),
+      }"
+    ></app-text-field>
+    <app-text-field
+      id="address"
+      label="{{ 'components.contact.edit.fields.address.title' | transloco }}"
+      [control]="getFormControl('address')"
+      [errorMessages]="{
+        minlength:
+          ('components.contact.edit.fields.address.minlength' | transloco),
+      }"
+    ></app-text-field>
+  </div>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+
+  <!-- Sección de Redes Sociales -->
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <h4
+        class="text-black text-sm mb-1 mt-3 dark:text-[rgb(209,213,219)] font-bold"
+      >
+        {{ "components.contact.edit.fields.socialNetworks.title" | transloco }}
+      </h4>
+      <button
+        type="button"
+        (click)="addSocialNetwork()"
+        class="flex items-center gap-2 px-3 py-2 text-sm text-white rounded-lg transition-colors bg-gray-800 hover:bg-gray-700"
+      >
+        <svg [lucideIcon]="getIcon('plus')" class="w-4 h-4"></svg>
+      </button>
+    </div>
+
+    @if (socialNetworks().length > 0) {
+      <div class="space-y-3">
+        @for (network of socialNetworks(); track $index; let i = $index) {
+          <div
+            class="flex items-start gap-3 p-4 bg-white dark:bg-white rounded-lg border border-black"
+          >
+            <!-- Contenido de la Red Social -->
+            <div class="flex-1 space-y-3">
+              <!-- Fila 1: Nombre de la Red -->
+              <app-text-field
+                [id]="'network-name-' + i"
+                [label]="
+                  'components.contact.edit.fields.socialNetworks.network'
+                    | transloco
+                "
+                [control]="getSocialNetworkControl(i, 'network')"
+                [placeholder]="
+                  'components.contact.edit.fields.socialNetworks.networkPlaceholder'
+                    | transloco
+                "
+                [errorMessages]="{
+                  required:
+                    ('components.contact.edit.fields.socialNetworks.networkRequired'
+                    | transloco),
+                }"
+              ></app-text-field>
+
+              <!-- Fila 2: URL y Usuario -->
+              <div class="grid grid-cols-2 gap-3">
+                <!-- URL con botón de copiar -->
+                <div class="flex items-start gap-2">
+                  <!-- Campo URL -->
+                  <div class="flex-1">
+                    <app-text-field
+                      [id]="'network-url-' + i"
+                      [label]="
+                        'components.contact.edit.fields.socialNetworks.url'
+                          | transloco
+                      "
+                      [control]="getSocialNetworkControl(i, 'url')"
+                      [placeholder]="
+                        'components.contact.edit.fields.socialNetworks.urlPlaceholder'
+                          | transloco
+                      "
+                      [errorMessages]="{
+                        required:
+                          ('components.contact.edit.fields.socialNetworks.urlRequired'
+                          | transloco),
+                        invalidUrl:
+                          ('components.contact.edit.fields.socialNetworks.urlInvalid'
+                          | transloco),
+                      }"
+                    ></app-text-field>
+                  </div>
+                  <!-- Botón para copiar URL (a la derecha) -->
+                  <button
+                    type="button"
+                    (click)="
+                      copyToClipboard(getSocialNetworkControl(i, 'url').value)
+                    "
+                    class="flex-shrink-0 mt-6 p-2 text-blue-900 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-full transition-colors"
+                    [disabled]="!getSocialNetworkControl(i, 'url').value"
+                    [class.opacity-50]="
+                      !getSocialNetworkControl(i, 'url').value
+                    "
+                    [class.cursor-not-allowed]="
+                      !getSocialNetworkControl(i, 'url').value
+                    "
+                    pTooltip="{{
+                      'components.contact.edit.fields.socialNetworks.copyUrl'
+                        | transloco
+                    }}"
+                    tooltipPosition="top"
+                  >
+                    <svg [lucideIcon]="getIcon('copy')" class="w-4 h-4"></svg>
+                  </button>
+                </div>
+
+                <!-- Usuario + Botón de Activar/Desactivar (alineado a la derecha) -->
+                <div class="flex items-start gap-2">
+                  <div class="flex-1">
+                    <app-text-field
+                      [id]="'network-username-' + i"
+                      [label]="getUsernameLabel(i)"
+                      [control]="getSocialNetworkControl(i, 'username')"
+                      [placeholder]="getUsernamePlaceholder(i)"
+                      [errorMessages]="{
+                        required:
+                          ('components.contact.edit.fields.socialNetworks.usernameRequired'
+                          | transloco),
+                      }"
+                    ></app-text-field>
+                  </div>
+                  <!-- Botón de Activar/Desactivar (a la derecha del campo Usuario) -->
+                  <button
+                    type="button"
+                    (click)="toggleActive(i)"
+                    class="flex-shrink-0 mt-6 p-2 rounded-full transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                    [pTooltip]="getToggleTooltip(i)"
+                    tooltipPosition="top"
+                  >
+                    <i [class]="getToggleIcon(i) + ' ' + getToggleClass(i)"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón para eliminar -->
+            <button
+              type="button"
+              (click)="removeSocialNetwork(i)"
+              class="flex-shrink-0 p-2 text-red-500 dark:hover:bg-red-900/20 rounded-full transition-colors"
+              pTooltip="{{
+                'components.contact.edit.fields.socialNetworks.delete'
+                  | transloco
+              }}"
+              tooltipPosition="left"
+            >
+              <svg [lucideIcon]="getIcon('trash-2')" class="w-4 h-4"></svg>
+            </button>
+          </div>
+        }
+      </div>
+    }
+    @if (socialNetworks().length === 0) {
+      <div class="p-4 bg-white dark:bg-white rounded-lg border border-black">
+        <div class="text-center py-8">
+          <svg
+            [lucideIcon]="getIcon('share-2')"
+            class="w-8 h-8 text-gray-300 dark:text-gray-600 mb-3 mx-auto"
+          ></svg>
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            {{
+              "components.contact.edit.fields.socialNetworks.empty" | transloco
+            }}
+          </p>
+          <button
+            type="button"
+            (click)="addSocialNetwork()"
+            class="mt-4 inline-flex items-center gap-2 px-4 py-2 text-sm text-white rounded-lg transition-colors bg-gray-800 hover:bg-gray-700"
+          >
+            <svg [lucideIcon]="getIcon('plus')" class="w-4 h-4"></svg>
+            <span>{{
+              "components.contact.edit.fields.socialNetworks.addFirst"
+                | transloco
+            }}</span>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</form>
+
+<style>
+  /* Estilos para override de PrimeNG */
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+</style>

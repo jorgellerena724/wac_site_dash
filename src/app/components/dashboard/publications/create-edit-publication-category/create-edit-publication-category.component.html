@@ -1,0 +1,29 @@
+<form [formGroup]="form" class="space-y-4 max-h-[70vh] pr-4 w-[420]">
+  <div class="mb-4 grid">
+    <app-text-field
+      id="title"
+      [label]="t('fields.name.title')"
+      [control]="getFormControl('title')"
+      [errorMessages]="{
+        required: t('fields.name.required'),
+        minlength: t('fields.name.minlength'),
+        duplicateName: (
+          'notifications.publication-category.error.duplicateName'
+            | transloco
+        ),
+      }"
+    ></app-text-field>
+  </div>
+  <hr class="border-gray-500 my-1 border-opacity-10" />
+</form>
+<style>
+  /* Estilos para override de PrimeNG */
+  :host ::ng-deep .p-fileupload-content {
+    display: none !important;
+  }
+  :host ::ng-deep app-file-upload label {
+    font-weight: bold !important;
+    color: black !important;
+    font-size: 14px;
+  }
+</style>

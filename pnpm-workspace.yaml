@@ -1,0 +1,9 @@
+allowBuilds:
+  "@parcel/watcher": true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+
+overrides:
+  glob: "^13.0.0"
+  rimraf: "^5.0.0"
