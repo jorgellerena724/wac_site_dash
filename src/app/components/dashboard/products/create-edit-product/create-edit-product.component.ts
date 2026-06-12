@@ -113,9 +113,9 @@ export class CreateEditProductComponent implements DynamicComponent {
 
   constructor() {
     this.form = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(2)]],
+      title: ['', [Validators.minLength(2)]],
       cal_url: [''],
-      category: ['', Validators.required],
+      category: [''],
       description: [''],
       files: this.filesFormArray,
       variants: this.variantsFormArray,
@@ -574,7 +574,11 @@ export class CreateEditProductComponent implements DynamicComponent {
     }
 
     const formData = new FormData();
-    formData.append('title', this.form.get('title')?.value);
+
+    const titleValue = this.form.get('title')?.value?.trim();
+    if (titleValue) {
+      formData.append('title', titleValue);
+    }
 
     const calUrlValue = this.form.get('cal_url')?.value;
     formData.append(
@@ -593,7 +597,11 @@ export class CreateEditProductComponent implements DynamicComponent {
           .replace(/\s+$/, '')
       : '';
     formData.append('description', processedDescription);
-    formData.append('category_id', this.form.get('category')?.value);
+
+    const categoryValue = this.form.get('category')?.value;
+    if (categoryValue) {
+      formData.append('category_id', categoryValue);
+    }
 
     // Agregar variants como JSON
     const variantsData = this.getVariantsData();

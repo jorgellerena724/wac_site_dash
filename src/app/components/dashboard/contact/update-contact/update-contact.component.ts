@@ -501,9 +501,9 @@ export class UpdateContactComponent implements DynamicComponent {
   }
 
   // Métodos para el botón de activar/desactivar
-  getToggleIcon(index: number): string {
+  getToggleIcon(index: number): any {
     const activeControl = this.getSocialNetworkControl(index, 'active');
-    return activeControl.value ? icons['activate'] : icons['deactivate'];
+    return this.getIcon(activeControl.value ? 'toggle-right' : 'toggle-left');
   }
 
   getToggleTooltip(index: number): string {

@@ -3,7 +3,6 @@ import {
   inject,
   signal,
   computed,
-  effect,
   TemplateRef,
   viewChild,
   DestroyRef,
@@ -239,7 +238,7 @@ export class ListProductComponent {
 
             return {
               ...item,
-              categoryName: item.category.title,
+              categoryName: item.category?.title || '',
               variantsText,
               firstImagePath,
               isVideo,
