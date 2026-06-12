@@ -1,4 +1,4 @@
-const apiUrl = 'https://wacsiteapi.shirkasoft.net/api/';
+const apiUrl = 'https://wacsiteback.shirkasoft.net/api/';
 const imgUrl = `${apiUrl}images/`;
 const imgPath = `assets/img/`;
 
