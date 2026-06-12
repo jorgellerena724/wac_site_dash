@@ -298,7 +298,7 @@ export class UsersComponent {
           error: (error) => {
             if (
               error.error.statusCode === 400 &&
-              error.error.message.includes('No se puede eliminar el producto')
+              error.error.message.includes('No se puede eliminar')
             ) {
               this.notificationSrv.addNotification(
                 error.error.message,

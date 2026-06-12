@@ -69,21 +69,6 @@
             }"
           />
 
-          @if (type() === 'password' && actualControl()?.value?.length > 0) {
-            <button
-              type="button"
-              (click)="togglePasswordVisibility()"
-              [disabled]="actualControl()?.disabled"
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
-              aria-label="Toggle password visibility"
-            >
-              @if (showPassword()) {
-                <svg [lucideIcon]="getIcon('eye-off')" class="text-base leading-none w-4 h-4"></svg>
-              } @else {
-                <svg [lucideIcon]="getIcon('eye')" class="text-base leading-none w-4 h-4"></svg>
-              }
-            </button>
-          }
         }
       </div>
     }

@@ -132,6 +132,9 @@ export class CreateEditUserComponent implements DynamicComponent {
 
     this.uploading.set(true);
     const formData = { ...this.form.value };
+    if (this.isEdit()) {
+      delete formData.password;
+    }
 
     const subscription$ = this.isEdit()
       ? this.srv.patch(formData)

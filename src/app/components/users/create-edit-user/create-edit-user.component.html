@@ -38,13 +38,15 @@
         }"
       ></app-text-field>
     }
-    <app-text-field
-      id="client"
-      [label]="t('fields.client.title')"
-      [control]="getFormControl('client')"
-      [errorMessages]="{
-        required: t('fields.client.required'),
-      }"
-    ></app-text-field>
+    @if (!isEdit()) {
+      <app-text-field
+        id="client"
+        [label]="t('fields.client.title')"
+        [control]="getFormControl('client')"
+        [errorMessages]="{
+          required: t('fields.client.required'),
+        }"
+      ></app-text-field>
+    }
   </div>
 </form>
