@@ -202,19 +202,13 @@ export class ListChatbotConfigComponent {
           const active = this.activeStatus().trim();
           const inactive = this.inactiveStatus().trim();
 
-          const processedData = data.map((item: any) => {
-            const models = item.models || [];
-            const providersList = models.map((m: any) => m.provider).join(', ');
-            const totalTokens = models.reduce((sum: number, m: any) => sum + (m.tokens_remaining || 0), 0);
-            return {
-              ...item,
-              user_name: item.user?.full_name,
-              provider: providersList || 'N/A',
-              tokens_remaining: totalTokens,
-              tokens_limit: models.reduce((sum: number, m: any) => sum + (m.tokens_limit || 0), 0),
-              statusToShow: item.status ? active : inactive,
-            };
-          });
+          const processedData = data.map((item: any) => ({
+            ...item,
+            user_name: item.user?.full_name,
+            model_name: item.model?.name || 'N/A',
+            provider: item.model?.provider || 'N/A',
+            statusToShow: item.status ? active : inactive,
+          }));
 
           this.data.set(processedData);
           this.loading.set(false);
@@ -327,7 +321,7 @@ export class ListChatbotConfigComponent {
     const newStatus = !data.status;
 
     this.srv
-      .patch({ status: newStatus }, data.user_id)
+      .patch({ status: newStatus }, data.id)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: () => {

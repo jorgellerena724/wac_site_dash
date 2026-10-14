@@ -4,24 +4,12 @@ import { Observable } from 'rxjs';
 import { ConfigService } from '../system/config.service';
 import { HomeData } from '../../interfaces/home.interface';
 
-export interface ChatbotProviderItem {
-  provider: string;
-  api_key: string;
-}
-
 export interface ChatbotConfigPayload {
   user_id: number;
-  models: ChatbotProviderItem[];
+  model_id: number;
+  api_key: string;
   prompt: string;
   temperature: number;
-}
-
-export interface ChatbotModelInfo {
-  provider: string;
-  api_key: string;
-  tokens_used: number;
-  tokens_limit: number;
-  tokens_remaining: number;
 }
 
 @Injectable({
